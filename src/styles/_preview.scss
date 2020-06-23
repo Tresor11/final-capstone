@@ -1,0 +1,27 @@
+div{
+    padding: none;
+    margin: none;
+}
+
+.preview{
+    width: 80%;
+    margin: 2% auto;
+    border: 1px solid black;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+
+    .prev-text{
+        width: 100%;
+        padding: 2% 5%;
+        margin-top: -10px;
+        height: 30%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        div{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

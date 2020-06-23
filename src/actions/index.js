@@ -1,5 +1,5 @@
-const fetchProductsPending = () => ({
-    type: 'FETCH_PRODUCTS_PENDING',
+const fetchProductsPending = (type) => ({
+    type: type,
   });
 
 const saveToken=(token)=>{

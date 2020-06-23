@@ -1,11 +1,24 @@
-import React from 'react'
-const ItemList=()=>{
-    console.log("mounted")
+import React,{useEffect} from 'react';
+import { connect } from "react-redux";
+import fetchItems from '../actions/fetchItems';
+import ItemPreview from '../components/ItemPreview';
+
+const ItemList=(props)=>{
+    const {fetchItems,store} = props
+    useEffect(()=>{
+        fetchItems(store.user.auth_token)
+    },[fetchItems,store.user.auth_token])
     return(
-        <div>
-        <h1>Hello there</h1>
-        <h1>I'm lit!!!!!!</h1>
+        <div className="columns">
+            {store.items.products.map(el=><ItemPreview props={el} />)}
         </div>
-    )
+        )
 }
-export default ItemList;
+
+const mapDispatchToProps = {
+    fetchItems,
+  };
+  
+  const mapStateToProps=(store)=>({store})
+
+  export default connect(mapStateToProps,mapDispatchToProps)(ItemList)

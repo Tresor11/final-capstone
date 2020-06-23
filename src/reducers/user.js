@@ -1,4 +1,4 @@
-import {getToken} from '../actions/index'
+import {getToken,saveToken} from '../actions/index'
 const initialState = {
   loged_in: false,
   auth_token: getToken() || '',
@@ -9,6 +9,7 @@ const initialState = {
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case "LOGIN":
+      saveToken(action.auth_token)
       return {
         ...state,
         loged_in: true,
@@ -21,8 +22,7 @@ function userReducer(state = initialState, action) {
         loged_in: false,
         token: "",
       };
-    case "FETCH_PRODUCTS_PENDING":
-      console.log("pending........")
+    case "LOGIN_USER_PENDING":
       return {
         ...state,
         pending: true,

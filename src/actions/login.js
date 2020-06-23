@@ -2,12 +2,11 @@ import {
   fetchProductsError,
   fetchProductsPending,
   LOGIN_USER,
-  saveToken,
 } from './index'
   
 function loginUser(data) {
     return dispatch => {
-      dispatch(fetchProductsPending());
+      dispatch(fetchProductsPending('LOGIN_USER_PENDING'));
       fetch('http://localhost:3000/auth/login',
         {
           method: 'POST',
@@ -21,7 +20,6 @@ function loginUser(data) {
           if (res.error) {
             throw (res.error);
           }
-          saveToken(res.auth_token)
           dispatch(LOGIN_USER(res))
           return res
         })
