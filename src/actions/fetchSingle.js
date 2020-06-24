@@ -1,7 +1,6 @@
 import {fetchProductsPending,fetchSingleItem,fetchProductsError} from './index'
 
 function fetchSingle(token,id) {
-  console.log(token)
   return (dispatch) => {
     dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'))
     fetch(`http://localhost:3000/items/${id}`,{headers:{

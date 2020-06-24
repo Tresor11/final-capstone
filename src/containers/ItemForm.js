@@ -1,52 +1,55 @@
-
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ImageUploader from 'react-images-upload';
-import createUser from '../actions/signup';
+import ImageUploader from "react-images-upload";
+import createItem from "../actions/createItem";
 
-class SignupForm extends React.Component {
+class ItemForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    name:"",
-      email: "",
-      password:"",
-      password_confirmation: "",
+      name: "",
+      price: "",
+      contact: "",
+      description: "",
       image: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onDrop=this.onDrop.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   handleChange(el) {
     const newSate = el.target.value;
     const prevState = this.state;
     this.setState({ ...prevState, [el.target.name]: newSate });
-    console.log(this.state)
+    console.log(this.state);
   }
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.createUser(this.state);
-    this.setState({ name: "", email: "",password:"",password_confirmation:"" });
+    this.props.createItem(this.state,this.props.state.user.auth_token);
+    this.setState({
+      name: "",
+      price: "",
+      contact: "",
+      description: "",
+      image: "",
+    });
   }
 
-  onDrop = picture => {
-    this.setState({ image: picture[0] })
-    console.log(this.state)
-}
+  onDrop = (picture) => {
+    this.setState({ image: picture[0] });
+    console.log(this.state);
+  };
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <h4 className="form-control new-book-text">ADD NEW BOOK</h4>
         <form className="form-control" onSubmit={this.handleSubmit}>
-
-
-        <div class="field">
-          <label class="label">Email</label>
+          <div class="field">
+            <label class="label">Name</label>
             <p class="control has-icons-left">
               <input
                 class="input"
@@ -64,15 +67,15 @@ class SignupForm extends React.Component {
           </div>
 
           <div class="field">
-          <label class="label">Email</label>
+            <label class="label">Price</label>
             <p class="control has-icons-left">
               <input
                 class="input"
-                type="email"
+                type="number"
                 required
                 className="input"
-                placeholder="Email"
-                name="email"
+                placeholder="Price"
+                name="price"
                 onChange={this.handleChange}
               />
               <span class="icon is-small is-left">
@@ -82,49 +85,42 @@ class SignupForm extends React.Component {
           </div>
 
           <div class="field">
-          <label class="label">Password</label>
+            <label class="label">Contact</label>
             <p class="control has-icons-left">
               <input
                 class="input"
-                type="password"
-                className="input"
+                type="text"
                 required
-                placeholder="password"
-                name="password"
+                className="input"
+                placeholder="contact"
+                name="contact"
                 onChange={this.handleChange}
               />
               <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
+                <i class="fas fa-profile"></i>
               </span>
             </p>
           </div>
 
-
           <div class="field">
-          <label class="label">Password confirmation</label>
-            <p class="control has-icons-left">
-              <input
-                class="input"
-                type="password"
-                required
-                className="input"
-                placeholder="password confirmation"
-                name="password_confirmation"
+            <label class="label">Description</label>
+            <div class="control">
+              <textarea
+                class="textarea"
+                name="description"
+                placeholder="Textarea"
                 onChange={this.handleChange}
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-            </p>
+              ></textarea>
+            </div>
           </div>
 
           <ImageUploader
-                withIcon={true}
-                buttonText='Profile picture'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
+            withIcon={true}
+            buttonText="Item Image"
+            onChange={this.onDrop}
+            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            maxFileSize={5242880}
+          />
 
           <div class="field">
             <p class="control">
@@ -139,12 +135,10 @@ class SignupForm extends React.Component {
   }
 }
 
-SignupForm.propTypes = {
-  create: PropTypes.func.isRequired,
-};
+const mapStateToProps=(state)=>({state})
 
 const mapDispatchToProps = {
-  createUser,
+  createItem,
 };
 
-export default connect(null, mapDispatchToProps)(SignupForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemForm);

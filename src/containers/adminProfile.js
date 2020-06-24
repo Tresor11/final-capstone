@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import ItemPreview from '../components/ItemPreview';
 import fetchUser from '../actions/fetchUserDetails'
-const UserProfile = (props) => {
+const AdminProfile = (props) => {
   const { store, fetchUser } = props;
   const data=store.user.details
   useEffect(() => {
     fetchUser(store.user.auth_token);
   }, []);
   if (store.user.details.favorites===undefined){
-    return (<h1>Hi i'm your profil</h1>)
+    return (<h1>Hi i'm your profil <Link to="/newitem">new_item</Link> </h1>)
   }
   console.log(data)
   return (
     <div>
-    <h1>{data.details.name}</h1>
+    <h1>Hi i'm the admin profile</h1>
     {data.favorites.map(el=><ItemPreview props={el} />)}
     </div>
   );
@@ -26,4 +27,4 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (store) => ({ store });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminProfile);
