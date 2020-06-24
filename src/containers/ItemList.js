@@ -8,6 +8,7 @@ const ItemList=(props)=>{
     useEffect(()=>{
         fetchItems(store.user.auth_token)
     },[fetchItems,store.user.auth_token])
+    console.log(store.items)
     return(
         <div className="columns">
             {store.items.products.map(el=><ItemPreview props={el} />)}

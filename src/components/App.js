@@ -4,7 +4,8 @@ import SignupForm from '../containers/SignupFrom';
 import LoginForm from '../containers/LoginForm';
 import ItemList from '../containers/ItemList';
 import ItemDetails from '../containers/itemDetails';
-import Nav from './Nav'
+import Nav from './Nav';
+import UserProfile from '../containers/userProfile';
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
       <Route path="/signup" component={SignupForm } />
       <Route path="/items" component={ItemList} exact />
       <Route path="/items/:id" component={ItemDetails} />
+      <Route path="/profile" component={UserProfile} />
     </Switch>
   </div>
 );

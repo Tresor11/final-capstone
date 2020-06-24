@@ -9,9 +9,9 @@ const Nav=()=>(
             <div className="line"></div>
         </div>
         <ul className='nav-links'>
-            <li><Link>Home</Link></li>
-            <li><Link>Profile</Link></li>
-            <li><Link>Logout</Link></li>
+            <li onClick={toggle}><Link to='/'>Home</Link></li>
+            <li onClick={toggle}><Link to='/profile'>Profile</Link></li>
+            <li onClick={toggle}><Link>Logout</Link></li>
         </ul>
         <div className='profile has-text-danger has-background-black'>
         <i class="fas fa-lock"></i>

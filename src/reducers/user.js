@@ -23,7 +23,7 @@ function userReducer(state = initialState, action) {
         loged_in: false,
         token: "",
       };
-    case 'GET_DETAILS':
+    case 'FETCH_USER_DETAILS':
       return {
         ...state,
         details:action.details

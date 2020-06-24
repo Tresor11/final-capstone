@@ -35,11 +35,17 @@ const getToken=()=>{
   const LOGIN_USER=({auth_token})=>({
     type: 'LOGIN',
     auth_token
-  }
-  )
+  })
+
+  const FetchUserDetails=(details)=>({
+    type:'FETCH_USER_DETAILS',
+    details
+  })
+
   export {
     fetchProductsError,
     fetchProductsPending,
+    FetchUserDetails,
     fetchProductsSuccess,
     UPDATE_CATEGORY,
     fetchSingleItem,
