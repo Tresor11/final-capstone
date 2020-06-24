@@ -1,0 +1,27 @@
+.item-details{
+    width: 95%;
+    background-color: white;
+    margin: auto;
+    .image{
+        position: relative;
+        .basic-info{
+            position: absolute;
+            bottom: 2%;
+            width: 100%;
+            padding: 0% 4%;
+            background-color: violet;
+            display: flex;
+            margin: auto;
+            justify-content: space-between;
+        }
+    }
+    .add{
+        width: 100%;
+        border: none;
+        padding: 4% 0;
+    }
+
+    .add:hover,.add:focus{
+        background-color: orangered;
+    }
+}

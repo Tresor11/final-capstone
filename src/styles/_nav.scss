@@ -1,9 +1,11 @@
 body{
     background-color: rgb(236, 236, 236);
+    min-height: 100vh;
 }
 
 nav{
     height: 10vh;
+    z-index: 2;
     position: relative;
     .profile{
         display: none;

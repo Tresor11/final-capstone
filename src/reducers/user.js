@@ -2,6 +2,7 @@ import {getToken,saveToken} from '../actions/index'
 const initialState = {
   loged_in: false,
   auth_token: getToken() || '',
+  details:{},
   pending: false,
   error: "",
 };
@@ -22,6 +23,11 @@ function userReducer(state = initialState, action) {
         loged_in: false,
         token: "",
       };
+    case 'GET_DETAILS':
+      return {
+        ...state,
+        details:action.details
+      }
     case "LOGIN_USER_PENDING":
       return {
         ...state,

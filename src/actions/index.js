@@ -27,8 +27,8 @@ const getToken=()=>{
     category,
   });
   
-  const fetchSingleMeal = details => ({
-    type: 'FETCH_MEAL_SUCCESS',
+  const fetchSingleItem = details => ({
+    type: 'FETCH_SINGLE_SUCCESS',
     details,
   });
 
@@ -42,7 +42,7 @@ const getToken=()=>{
     fetchProductsPending,
     fetchProductsSuccess,
     UPDATE_CATEGORY,
-    fetchSingleMeal,
+    fetchSingleItem,
     saveToken,
     LOGIN_USER,
     getToken
