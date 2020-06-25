@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import loginUser from '../actions/login';
+import fetchUser from '../actions/fetchUserDetails'
+import { Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -36,13 +38,17 @@ class LoginForm extends React.Component {
 
 
   render() {
-    const {store,history}=this.props
+    const {store,history,fetchUser}=this.props
+    const { email,password}=this.state;
+    console.log(this.props)
     if (store.user.auth_token!==''){
+      fetchUser(store.user.auth_token);
       history.push('/items')
     }
     return (
-      <div>
-        <h4 className="form-control new-book-text">ADD NEW BOOK</h4>
+      <div className="wrap">
+      <div className="login-form">
+        <h4 className="form-control new-book-text is-size-4">LOGIN</h4>
         <form className="form-control" onSubmit={this.handleSubmit}>
 
           <div class="field">
@@ -51,6 +57,7 @@ class LoginForm extends React.Component {
               <input
                 class="input"
                 type="email"
+                value={email}
                 required
                 className="input"
                 placeholder="Email"
@@ -69,6 +76,7 @@ class LoginForm extends React.Component {
               <input
                 class="input"
                 type="password"
+                value={password}
                 className="input"
                 required
                 placeholder="password"
@@ -89,7 +97,10 @@ class LoginForm extends React.Component {
             </p>
           </div>
         </form>
+        <h4>or</h4>
+        <Link to='/signup' className='button is-outlined has-text-primary'>Signup</Link>
       </div>
+    </div>
     );
   }
 }
@@ -100,6 +111,7 @@ LoginForm.propTypes = {
 
 const mapDispatchToProps = {
   loginUser,
+  fetchUser
 };
 
 const mapStateToProps=(store)=>({store})

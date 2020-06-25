@@ -7,6 +7,15 @@ const saveToken=(token)=>{
     localStorage.setItem('token',JSON.stringify(token))
 }
 
+const saveDetails=(details)=>{
+  localStorage.setItem('details',JSON.stringify(details))
+}
+
+const getDetails=()=>{
+  const res=localStorage.getItem('details')
+  return JSON.parse(res);
+}
+
 const getToken=()=>{
   const res=localStorage.getItem('token')
   console.log('gotten it from the storage')
@@ -51,6 +60,8 @@ const getToken=()=>{
     fetchSingleItem,
     saveToken,
     LOGIN_USER,
+    saveDetails,
+    getDetails,
     getToken
   };
   

@@ -3,14 +3,41 @@ div{
     margin: none;
 }
 
+.item-list{
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 70%;
+}
+
+.wrap-list{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-list::-webkit-scrollbar {
+    display: none;
+  }
+
 .preview{
-    width: 80%;
-    margin: 2% auto;
-    border: 1px solid black;
+    min-width: 20rem;
+    transition: all 0.5s;
+    height: 20rem;
+    border-radius: 10px;
+    margin: 10px;
     display: flex;
     background-color: white;
     flex-direction: column;
-
+    a{
+        color: rgb(83, 83, 83);
+    }
+    img{
+        height: 70%;
+        width: 100%;
+    }
     .prev-text{
         width: 100%;
         padding: 2% 5%;
@@ -21,7 +48,18 @@ div{
         flex-direction: column;
         div{
             display: flex;
+            font-weight: bolder;
+            margin: 5px;
             justify-content: space-between;
         }
+        div:nth-child(2){
+            width: 30%;
+        }
     }
+}
+
+.preview:hover{
+    transform: scale(1.1);
+    margin: 20px;
+    // -webkit-transform: scale(1.1); ;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom';
 import ImageUploader from 'react-images-upload';
 import createUser from '../actions/signup';
 
@@ -39,13 +40,14 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wrap">
+      <div className="signup-form">
         <h4 className="form-control new-book-text">ADD NEW BOOK</h4>
         <form className="form-control" onSubmit={this.handleSubmit}>
 
 
         <div class="field">
-          <label class="label">Email</label>
+          <label class="label">Name</label>
             <p class="control has-icons-left">
               <input
                 class="input"
@@ -128,12 +130,15 @@ class SignupForm extends React.Component {
           <div class="field">
             <p class="control">
               <button class="button is-success" type="submit">
-                Login
+                Signup
               </button>
             </p>
           </div>
         </form>
+        <h4>-Have an account?-</h4>
+        <Link to="/" className="button has-text-info">Login</Link>
       </div>
+    </div>
     );
   }
 }

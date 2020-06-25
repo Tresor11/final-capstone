@@ -1,8 +1,8 @@
-import {getToken,saveToken} from '../actions/index'
+import {getToken,saveToken,saveDetails,getDetails} from '../actions/index'
 const initialState = {
   loged_in: false,
   auth_token: getToken() || '',
-  details:{},
+  details:getDetails() || {},
   pending: false,
   error: "",
 };
@@ -24,9 +24,10 @@ function userReducer(state = initialState, action) {
         token: "",
       };
     case 'FETCH_USER_DETAILS':
+      saveDetails(action.details)
       return {
         ...state,
-        details:action.details
+        details:getDetails()
       }
     case "LOGIN_USER_PENDING":
       return {

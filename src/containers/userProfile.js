@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ItemPreview from '../components/ItemPreview';
-import fetchUser from '../actions/fetchUserDetails'
+import fetchUser from '../actions/fetchUserDetails';
+import Nav from '../components/Nav'
 const UserProfile = (props) => {
   const { store, fetchUser } = props;
   const data=store.user.details
@@ -11,10 +12,12 @@ const UserProfile = (props) => {
   if (store.user.details.favorites===undefined){
     return (<h1>Hi i'm your profil</h1>)
   }
-  console.log(data)
   return (
     <div>
-    <h1>{data.details.name}</h1>
+    <Nav text={"Profile"} />
+    <div className="credential">
+      
+    </div>
     {data.favorites.map(el=><ItemPreview props={el} />)}
     </div>
   );

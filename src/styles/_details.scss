@@ -1,27 +1,71 @@
+.wrap-details{
+    display: flex;
+    justify-content: center;
+}
+
 .item-details{
-    width: 95%;
-    background-color: white;
-    margin: auto;
+    margin-top: 10%;
+    position: relative;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
     .image{
         position: relative;
         .basic-info{
             position: absolute;
             bottom: 2%;
             width: 100%;
-            padding: 0% 4%;
-            background-color: violet;
             display: flex;
-            margin: auto;
             justify-content: space-between;
+            padding: 0 5%;
+
+            .price{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+            }
         }
     }
-    .add{
-        width: 100%;
-        border: none;
-        padding: 4% 0;
-    }
 
-    .add:hover,.add:focus{
-        background-color: orangered;
+    .full-info{
+        padding-bottom: 10%;
+        div{
+            margin: 5%;
+            h4{
+                font-weight: bold;
+                padding: 5px;
+            }
+            p{
+                padding: 5px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        }
     }
+    .button{
+        position: absolute;
+        background-color: rgb(255, 116, 66);
+        bottom: 0%;
+        width: 100%;
+        color: white;
+        font-weight: bolder;
+    }
+}
+
+.user-image{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    h4{
+        font-weight: bolder;
+    }
+}
+
+.thumb{
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%
 }

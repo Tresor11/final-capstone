@@ -1,6 +1,6 @@
-// import {
-//     CREATE_BOOK,
-//   } from './index';
+import {
+  LOGIN_USER
+} from './index';
   
   function createUser(data) {
     return dispatch => {
@@ -19,6 +19,7 @@
             throw (res.error);
           }
           console.log(res)
+          LOGIN_USER(res)
         })
         .catch(error => error);
     };

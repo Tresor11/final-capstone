@@ -15,7 +15,9 @@ const ItemPreview = ({ props }) => {
             <p>{name}</p>
             <p></p>$ {price}
           </div>
-          <div>Liked by</div>
+          <div><i class="fas fa-star has-text-warning"></i>
+          <i class="fas fa-star has-text-warning"></i>
+          <i class="fas fa-star has-text-warning"></i></div>
         </div>
       </Link>
     </div>
