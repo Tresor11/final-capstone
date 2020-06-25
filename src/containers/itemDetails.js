@@ -17,7 +17,7 @@ const ItemDetails = (props) => {
     <div>
       <Nav text={single.details.name} />
       <div className="wrap-details">
-        <div className="item-details">
+        <div className="item-details shadow">
           <div className="image">
             <img
               src="https://res-3.cloudinary.com/tresor11/image/upload/v1592940283/h50xxxqprr5fqjau9oi0.png"

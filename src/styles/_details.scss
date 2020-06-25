@@ -6,8 +6,10 @@
 .item-details{
     margin-top: 10%;
     position: relative;
-    width: 90%;
+    width: 95%;
     background-color: rgb(255, 255, 255);
+    padding: 2%;
+    border-radius: 10px;
     .image{
         position: relative;
         .basic-info{
@@ -44,8 +46,8 @@
     .button{
         position: absolute;
         background-color: rgb(255, 116, 66);
-        bottom: 0%;
-        width: 100%;
+        bottom: 2%;
+        width: 95%;
         color: white;
         font-weight: bolder;
     }

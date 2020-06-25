@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ItemPreview = ({ props }) => {
   const { name, price, id } = props;
   return (
-    <div className="preview column">
+    <div className="preview column shadow">
       <Link to={`/items/${id}`}>
         <img
           src="https://res-3.cloudinary.com/tresor11/image/upload/v1592940283/h50xxxqprr5fqjau9oi0.png"
