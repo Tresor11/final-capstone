@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import { connect } from "react-redux";
 import fetchItems from '../actions/fetchItems';
 import ItemPreview from '../components/ItemPreview';
-import Nav from '../components/Nav'
+import Nav from './Nav'
 
 const ItemList=(props)=>{
     const {fetchItems,store} = props

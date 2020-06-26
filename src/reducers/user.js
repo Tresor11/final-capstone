@@ -18,10 +18,13 @@ function userReducer(state = initialState, action) {
         pending: false,
       };
     case "LOGOUT":
+      localStorage.clear()
       return {
         ...state,
         loged_in: false,
-        token: "",
+        auth_token:'',
+        details:getDetails(),
+        token: getToken(),
       };
     case 'FETCH_USER_DETAILS':
       saveDetails(action.details)

@@ -21,6 +21,11 @@ const getToken=()=>{
   console.log('gotten it from the storage')
   return JSON.parse(res);
 }
+
+const removeFav=(id)=>({
+  type:'REMOVE_FAV',
+  id
+})
   
   const fetchProductsSuccess = products => ({
     type: 'FETCH_PRODUCTS_SUCCESS',
@@ -46,6 +51,10 @@ const getToken=()=>{
     auth_token
   })
 
+  const LOGOUT_USER=()=>({
+    type:'LOGOUT'
+  })
+
   const FetchUserDetails=(details)=>({
     type:'FETCH_USER_DETAILS',
     details
@@ -62,6 +71,8 @@ const getToken=()=>{
     LOGIN_USER,
     saveDetails,
     getDetails,
-    getToken
+    removeFav,
+    getToken,
+    LOGOUT_USER
   };
   

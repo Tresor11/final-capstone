@@ -1,6 +1,9 @@
 const initialState = {
     pending: false,
-    details: {},
+    details: {
+      item:{},
+      liked:''
+    },
     error: '',
   };
   

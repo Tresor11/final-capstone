@@ -7,6 +7,8 @@ import ItemList from '../containers/ItemList';
 import ItemDetails from '../containers/itemDetails';
 import UserProfile from '../containers/userProfile';
 import AdminProfile from '../containers/adminProfile';
+import EditProfile from '../containers/EditProfile';
+import EditItem from '../containers/EditItem'
 
 const App = () => (
   <div>
@@ -14,10 +16,12 @@ const App = () => (
       <Route path="/" component={LoginForm} exact />
       <Route path="/signup" component={SignupForm } />
       <Route path="/items" component={ItemList} exact />
-      <Route path="/items/:id" component={ItemDetails} />
+      <Route path="/items/:id" component={ItemDetails} exact />
       <Route path="/profile" component={UserProfile} />
       <Route path="/admin" component={AdminProfile} />
       <Route path="/newitem" component={ItemForm} />
+      <Route path="/edit-profile" component={EditProfile} />
+      <Route path="/items/:id/edit" component={EditItem} />
     </Switch>
   </div>
 );

@@ -1,12 +1,17 @@
 import {fetchProductsPending,fetchSingleItem,fetchProductsError} from './index'
 
-function fetchSingle(token,id) {
+function fetchSingle(token,id,method) {
   return (dispatch) => {
     dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'))
-    fetch(`http://localhost:3000/items/${id}`,{headers:{
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }})
+    var requestOptions = {
+      method: method,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': "application/json"
+      },
+    };
+
+    fetch(`http://localhost:3000/items/${id}`,requestOptions)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {

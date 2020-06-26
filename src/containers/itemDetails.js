@@ -2,20 +2,25 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import fetchSingle from "../actions/fetchSingle";
 import addFavorite from "../actions/addfavorite";
-import Nav from "../components/Nav";
+import Nav from "./Nav";
+import { Link } from "react-router-dom";
+
 const ItemDetails = (props) => {
-  const { store, fetchSingle, match, addFavorite } = props;
-  console.log(store);
+  const { store, fetchSingle, match, addFavorite, history } = props;
   useEffect(() => {
-    fetchSingle(store.user.auth_token, match.params.id);
-  }, []);
+    fetchSingle(store.user.auth_token, match.params.id, "GET");
+  }, [fetchSingle, store.user.auth_token, match.params.id]);
   const { single } = store;
   const handleClick = () => {
     addFavorite(store.user.auth_token, single.details.id);
   };
+  const handleDelete = () => {
+    fetchSingle(store.user.auth_token, match.params.id, "DELETE");
+    history.push("/items");
+  };
   return (
     <div>
-      <Nav text={single.details.name} />
+      <Nav text={single.details.item.name} />
       <div className="wrap-details">
         <div className="item-details shadow">
           <div className="image">
@@ -46,17 +51,40 @@ const ItemDetails = (props) => {
           <div className="full-info">
             <div>
               <h4>About this item</h4>
-              <p>{single.details.description}</p>
+              <p>{single.details.item.description}</p>
             </div>
             <div>
               <h4>contact</h4>
-              <p>{single.details.contact}</p>
+              <p>{single.details.item.contact}</p>
             </div>
           </div>
-          <button className="button" onClick={handleClick}>
-            {" "}
-            Add to favorite
-          </button>
+          {store.user.details.details.admin === true ? (
+            <div className="admin-action">
+              <button className="edit">
+                <Link to={`/items/${single.details.item.id}/edit`}>Edit item</Link>
+              </button>
+
+              <button
+                className={`remove
+            }`}
+                onClick={handleDelete}
+              >
+                Delete item
+              </button>
+            </div>
+          ) : (
+            <button
+              className={`button ${
+                single.details.liked === true ? "remove" : "add"
+              }`}
+              onClick={handleClick}
+            >
+              {" "}
+              {single.details.liked === true
+                ? "remove from favorites"
+                : "add to favorites"}
+            </button>
+          )}
         </div>
       </div>
     </div>

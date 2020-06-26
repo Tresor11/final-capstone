@@ -20,6 +20,8 @@ function loginUser(data) {
           if (res.error) {
             throw (res.error);
           }
+          console.log("================getting the current user===============================")
+          console.log(res)
           dispatch(LOGIN_USER(res))
           return res
         })

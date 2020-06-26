@@ -18,8 +18,7 @@ import {
           if (res.error) {
             throw (res.error);
           }
-          console.log(res)
-          LOGIN_USER(res)
+          dispatch(LOGIN_USER(res))
         })
         .catch(error => error);
     };

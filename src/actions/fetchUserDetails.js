@@ -1,7 +1,6 @@
 import {fetchProductsPending,fetchProductsError,FetchUserDetails} from './index'
 
 function fetchUser(token) {
-  console.log(token)
   return (dispatch) => {
     dispatch(fetchProductsPending('FETCH_USER_PENDING'))
     fetch(`http://localhost:3000/profile`,{headers:{
@@ -13,6 +12,7 @@ function fetchUser(token) {
         if (res.error) {
           throw res.error;
         }
+        console.log(res)
         dispatch(FetchUserDetails(res))
       })
       .catch((error) => {
