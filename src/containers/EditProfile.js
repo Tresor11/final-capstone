@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import editProfile from "../actions/editProfile";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import editProfile from '../actions/editProfile';
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class EditProfile extends React.Component {
     this.state = {
       name: this.props.store.user.details.details.name,
       email: this.props.store.user.details.details.email,
-      password:this.props.store.user.details.details.password
+      password: this.props.store.user.details.details.password,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,25 +22,24 @@ class EditProfile extends React.Component {
   }
 
   handleSubmit(ev) {
-    const path=this.props.store.user.details.details.admin ===true? '/admin':'/profile'
+    const path = this.props.store.user.details.details.admin === true ? '/admin' : '/profile';
     ev.preventDefault();
-    this.props.editProfile(this.state,this.props.store.user.auth_token);
-    this.props.history.push(path)
+    this.props.editProfile(this.state, this.props.store.user.auth_token);
+    this.props.history.push(path);
   }
 
   render() {
     return (
-        <div className="wrap">
+      <div className="wrap">
         <div className="signup-form">
           <h4 className="form-control new-book-text">CREATE ACCOUNT</h4>
           <form className="form-control" onSubmit={this.handleSubmit}>
-  
-  
-          <div class="field">
-            <label class="label">Name</label>
-              <p class="control has-icons-left">
+
+            <div className="field">
+              <label className="label">Name</label>
+              <p className="control has-icons-left">
                 <input
-                  class="input"
+                  className="input"
                   value={this.state.name}
                   type="text"
                   className="input"
@@ -48,17 +47,17 @@ class EditProfile extends React.Component {
                   name="name"
                   onChange={this.handleChange}
                 />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-profile"></i>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-profile" />
                 </span>
               </p>
             </div>
-  
-            <div class="field">
-            <label class="label">Email</label>
-              <p class="control has-icons-left">
+
+            <div className="field">
+              <label className="label">Email</label>
+              <p className="control has-icons-left">
                 <input
-                  class="input"
+                  className="input"
                   type="email"
                   value={this.state.email}
                   className="input"
@@ -66,17 +65,17 @@ class EditProfile extends React.Component {
                   name="email"
                   onChange={this.handleChange}
                 />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-envelope"></i>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-envelope" />
                 </span>
               </p>
             </div>
-  
-            <div class="field">
-            <label class="label">Password</label>
-              <p class="control has-icons-left">
+
+            <div className="field">
+              <label className="label">Password</label>
+              <p className="control has-icons-left">
                 <input
-                  class="input"
+                  className="input"
                   type="password"
                   className="input"
                   value={this.state.password}
@@ -84,14 +83,14 @@ class EditProfile extends React.Component {
                   name="password"
                   onChange={this.handleChange}
                 />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock" />
                 </span>
               </p>
             </div>
-            <div class="field">
-              <p class="control">
-                <button class="button is-success" type="submit">
+            <div className="field">
+              <p className="control">
+                <button className="button is-success" type="submit">
                   Update Profile
                 </button>
               </p>
@@ -99,7 +98,7 @@ class EditProfile extends React.Component {
           </form>
         </div>
       </div>
-      );
+    );
   }
 }
 
@@ -107,10 +106,10 @@ EditProfile.propTypes = {
   create: PropTypes.func.isRequired,
 };
 
-const mapStateToProps=(store)=>({store})
+const mapStateToProps = store => ({ store });
 
 const mapDispatchToProps = {
-  editProfile
+  editProfile,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProfile);

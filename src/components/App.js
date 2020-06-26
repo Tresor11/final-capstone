@@ -8,13 +8,13 @@ import ItemDetails from '../containers/itemDetails';
 import UserProfile from '../containers/userProfile';
 import AdminProfile from '../containers/adminProfile';
 import EditProfile from '../containers/EditProfile';
-import EditItem from '../containers/EditItem'
+import EditItem from '../containers/EditItem';
 
 const App = () => (
   <div>
     <Switch>
       <Route path="/" component={LoginForm} exact />
-      <Route path="/signup" component={SignupForm } />
+      <Route path="/signup" component={SignupForm} />
       <Route path="/items" component={ItemList} exact />
       <Route path="/items/:id" component={ItemDetails} exact />
       <Route path="/profile" component={UserProfile} />
@@ -25,6 +25,5 @@ const App = () => (
     </Switch>
   </div>
 );
-
 
 export default App;

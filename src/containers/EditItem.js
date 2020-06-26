@@ -1,16 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import editItem from "../actions/editItem";
+import React from 'react';
+import { connect } from 'react-redux';
+import editItem from '../actions/editItem';
 
 class EditItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      price: "",
-      contact: "",
-      description: "",
-      image: "",
+      name: '',
+      price: '',
+      contact: '',
+      description: '',
+      image: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,13 +25,13 @@ class EditItem extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.editItem(this.state, this.props.store.user.auth_token,this.props.store.single.id);
+    this.props.editItem(this.state, this.props.store.user.auth_token, this.props.store.single.id);
     this.setState({
-      name: "",
-      price: "",
-      contact: "",
-      description: "",
-      image: "",
+      name: '',
+      price: '',
+      contact: '',
+      description: '',
+      image: '',
     });
   }
 
@@ -41,11 +41,11 @@ class EditItem extends React.Component {
       <div>
         <h4 className="form-control new-book-text">EDIT ITEM</h4>
         <form className="form-control" onSubmit={this.handleSubmit}>
-          <div class="field">
-            <label class="label">Name</label>
-            <p class="control has-icons-left">
+          <div className="field">
+            <label className="label">Name</label>
+            <p className="control has-icons-left">
               <input
-                class="input"
+                className="input"
                 type="text"
                 required
                 className="input"
@@ -53,17 +53,17 @@ class EditItem extends React.Component {
                 name="name"
                 onChange={this.handleChange}
               />
-              <span class="icon is-small is-left">
-                <i class="fas fa-profile"></i>
+              <span className="icon is-small is-left">
+                <i className="fas fa-profile" />
               </span>
             </p>
           </div>
 
-          <div class="field">
-            <label class="label">Price</label>
-            <p class="control has-icons-left">
+          <div className="field">
+            <label className="label">Price</label>
+            <p className="control has-icons-left">
               <input
-                class="input"
+                className="input"
                 type="number"
                 required
                 className="input"
@@ -71,17 +71,17 @@ class EditItem extends React.Component {
                 name="price"
                 onChange={this.handleChange}
               />
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope" />
               </span>
             </p>
           </div>
 
-          <div class="field">
-            <label class="label">Contact</label>
-            <p class="control has-icons-left">
+          <div className="field">
+            <label className="label">Contact</label>
+            <p className="control has-icons-left">
               <input
-                class="input"
+                className="input"
                 type="text"
                 required
                 className="input"
@@ -89,27 +89,27 @@ class EditItem extends React.Component {
                 name="contact"
                 onChange={this.handleChange}
               />
-              <span class="icon is-small is-left">
-                <i class="fas fa-profile"></i>
+              <span className="icon is-small is-left">
+                <i className="fas fa-profile" />
               </span>
             </p>
           </div>
 
-          <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Description</label>
+            <div className="control">
               <textarea
-                class="textarea"
+                className="textarea"
                 name="description"
                 placeholder="Textarea"
                 onChange={this.handleChange}
-              ></textarea>
+              />
             </div>
           </div>
 
-          <div class="field">
-            <p class="control">
-              <button class="button is-success" type="submit">
+          <div className="field">
+            <p className="control">
+              <button className="button is-success" type="submit">
                 Update Item
               </button>
             </p>
@@ -120,10 +120,10 @@ class EditItem extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ state });
+const mapStateToProps = state => ({ state });
 
 const mapDispatchToProps = {
-  editItem
+  editItem,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditItem);

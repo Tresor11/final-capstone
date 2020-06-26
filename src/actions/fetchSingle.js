@@ -1,26 +1,26 @@
-import {fetchProductsPending,fetchSingleItem,fetchProductsError} from './index'
+import { fetchProductsPending, fetchSingleItem, fetchProductsError } from './index';
 
-function fetchSingle(token,id,method) {
-  return (dispatch) => {
-    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'))
-    var requestOptions = {
-      method: method,
+function fetchSingle(token, id, method) {
+  return dispatch => {
+    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
+    const requestOptions = {
+      method,
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': "application/json"
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
     };
 
-    fetch(`http://localhost:3000/items/${id}`,requestOptions)
-      .then((res) => res.json())
-      .then((res) => {
+    fetch(`http://localhost:3000/items/${id}`, requestOptions)
+      .then(res => res.json())
+      .then(res => {
         if (res.error) {
           throw res.error;
         }
-        dispatch(fetchSingleItem(res))
+        dispatch(fetchSingleItem(res));
       })
-      .catch((error) => {
-        dispatch(fetchProductsError(error))
+      .catch(error => {
+        dispatch(fetchProductsError(error));
       });
   };
 }

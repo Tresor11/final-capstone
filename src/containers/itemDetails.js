@@ -1,22 +1,24 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import fetchSingle from "../actions/fetchSingle";
-import addFavorite from "../actions/addfavorite";
-import Nav from "./Nav";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import fetchSingle from '../actions/fetchSingle';
+import addFavorite from '../actions/addfavorite';
+import Nav from './Nav';
 
-const ItemDetails = (props) => {
-  const { store, fetchSingle, match, addFavorite, history } = props;
+const ItemDetails = props => {
+  const {
+    store, fetchSingle, match, addFavorite, history,
+  } = props;
   useEffect(() => {
-    fetchSingle(store.user.auth_token, match.params.id, "GET");
+    fetchSingle(store.user.auth_token, match.params.id, 'GET');
   }, [fetchSingle, store.user.auth_token, match.params.id]);
   const { single } = store;
   const handleClick = () => {
     addFavorite(store.user.auth_token, single.details.id);
   };
   const handleDelete = () => {
-    fetchSingle(store.user.auth_token, match.params.id, "DELETE");
-    history.push("/items");
+    fetchSingle(store.user.auth_token, match.params.id, 'DELETE');
+    history.push('/items');
   };
   return (
     <div>
@@ -35,17 +37,20 @@ const ItemDetails = (props) => {
                   style={{
                     backgroundImage: `url(${store.user.details.details.image.url})`,
                   }}
-                ></div>
+                />
                 <div>
                   <h4>{store.user.details.details.name}</h4>
                   <div>
-                    <i class="fas fa-star has-text-warning"></i>
-                    <i class="fas fa-star has-text-warning"></i>
-                    <i class="fas fa-star has-text-warning"></i>
+                    <i className="fas fa-star has-text-warning" />
+                    <i className="fas fa-star has-text-warning" />
+                    <i className="fas fa-star has-text-warning" />
                   </div>
                 </div>
               </div>
-              <div className="price">$ {single.details.price}</div>
+              <div className="price">
+                $
+                {single.details.price}
+              </div>
             </div>
           </div>
           <div className="full-info">
@@ -75,14 +80,14 @@ const ItemDetails = (props) => {
           ) : (
             <button
               className={`button ${
-                single.details.liked === true ? "remove" : "add"
+                single.details.liked === true ? 'remove' : 'add'
               }`}
               onClick={handleClick}
             >
-              {" "}
+              {' '}
               {single.details.liked === true
-                ? "remove from favorites"
-                : "add to favorites"}
+                ? 'remove from favorites'
+                : 'add to favorites'}
             </button>
           )}
         </div>
@@ -96,6 +101,6 @@ const mapDispatchToProps = {
   addFavorite,
 };
 
-const mapStateToProps = (store) => ({ store });
+const mapStateToProps = store => ({ store });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetails);

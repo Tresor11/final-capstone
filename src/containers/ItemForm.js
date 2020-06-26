@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import ImageUploader from "react-images-upload";
-import createItem from "../actions/createItem";
+import React from 'react';
+import { connect } from 'react-redux';
+import ImageUploader from 'react-images-upload';
+import createItem from '../actions/createItem';
 
 class ItemForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      price: "",
-      contact: "",
-      description: "",
-      image: "",
+      name: '',
+      price: '',
+      contact: '',
+      description: '',
+      image: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,32 +27,32 @@ class ItemForm extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.createItem(this.state,this.props.state.user.auth_token);
+    this.props.createItem(this.state, this.props.state.user.auth_token);
     this.setState({
-      name: "",
-      price: "",
-      contact: "",
-      description: "",
-      image: "",
+      name: '',
+      price: '',
+      contact: '',
+      description: '',
+      image: '',
     });
   }
 
-  onDrop = (picture) => {
+  onDrop(picture) {
     this.setState({ image: picture[0] });
     console.log(this.state);
-  };
+  }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div>
         <h4 className="form-control new-book-text">ADD NEW BOOK</h4>
         <form className="form-control" onSubmit={this.handleSubmit}>
-          <div class="field">
-            <label class="label">Name</label>
-            <p class="control has-icons-left">
+          <div className="field">
+            <label className="label">Name</label>
+            <p className="control has-icons-left">
               <input
-                class="input"
+                className="input"
                 type="text"
                 required
                 className="input"
@@ -60,17 +60,17 @@ class ItemForm extends React.Component {
                 name="name"
                 onChange={this.handleChange}
               />
-              <span class="icon is-small is-left">
-                <i class="fas fa-profile"></i>
+              <span className="icon is-small is-left">
+                <i className="fas fa-profile" />
               </span>
             </p>
           </div>
 
-          <div class="field">
-            <label class="label">Price</label>
-            <p class="control has-icons-left">
+          <div className="field">
+            <label className="label">Price</label>
+            <p className="control has-icons-left">
               <input
-                class="input"
+                className="input"
                 type="number"
                 required
                 className="input"
@@ -78,17 +78,17 @@ class ItemForm extends React.Component {
                 name="price"
                 onChange={this.handleChange}
               />
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope" />
               </span>
             </p>
           </div>
 
-          <div class="field">
-            <label class="label">Contact</label>
-            <p class="control has-icons-left">
+          <div className="field">
+            <label className="label">Contact</label>
+            <p className="control has-icons-left">
               <input
-                class="input"
+                className="input"
                 type="text"
                 required
                 className="input"
@@ -96,35 +96,35 @@ class ItemForm extends React.Component {
                 name="contact"
                 onChange={this.handleChange}
               />
-              <span class="icon is-small is-left">
-                <i class="fas fa-profile"></i>
+              <span className="icon is-small is-left">
+                <i className="fas fa-profile" />
               </span>
             </p>
           </div>
 
-          <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Description</label>
+            <div className="control">
               <textarea
-                class="textarea"
+                className="textarea"
                 name="description"
                 placeholder="Textarea"
                 onChange={this.handleChange}
-              ></textarea>
+              />
             </div>
           </div>
 
           <ImageUploader
-            withIcon={true}
+            withIcon
             buttonText="Item Image"
             onChange={this.onDrop}
-            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            imgExtension={['.jpg', '.gif', '.png', '.gif']}
             maxFileSize={5242880}
           />
 
-          <div class="field">
-            <p class="control">
-              <button class="button is-success" type="submit">
+          <div className="field">
+            <p className="control">
+              <button className="button is-success" type="submit">
                 Login
               </button>
             </p>
@@ -135,7 +135,7 @@ class ItemForm extends React.Component {
   }
 }
 
-const mapStateToProps=(state)=>({state})
+const mapStateToProps = state => ({ state });
 
 const mapDispatchToProps = {
   createItem,

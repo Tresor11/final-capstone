@@ -1,26 +1,25 @@
-import {fetchProductsPending,fetchSingleItem,fetchProductsError} from './index'
+import { fetchProductsPending, fetchSingleItem, fetchProductsError } from './index';
 
-function addFavorite(token,id) {
-  
-  return (dispatch) => {
-    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'))
-    var requestOptions = {
+function addFavorite(token, id) {
+  return dispatch => {
+    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
+    const requestOptions = {
       method: 'DELETE',
-      headers:{
+      headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     };
-    fetch(`http://localhost:3000/favorites/${id}`,requestOptions)
-      .then((res) => res.json())
-      .then((res) => {
+    fetch(`http://localhost:3000/favorites/${id}`, requestOptions)
+      .then(res => res.json())
+      .then(res => {
         if (res.error) {
           throw res.error;
         }
-        console.log(res)
+        console.log(res);
       })
-      .catch((error) => {
-        dispatch(fetchProductsError(error))
+      .catch(error => {
+        dispatch(fetchProductsError(error));
       });
   };
 }

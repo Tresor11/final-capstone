@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ItemPreview = ({ props }) => {
   const { name, price, id } = props;
@@ -13,11 +13,16 @@ const ItemPreview = ({ props }) => {
         <div className="prev-text">
           <div>
             <p>{name}</p>
-            <p></p>$ {price}
+            <p />
+            $
+            {' '}
+            {price}
           </div>
-          <div><i class="fas fa-star has-text-warning"></i>
-          <i class="fas fa-star has-text-warning"></i>
-          <i class="fas fa-star has-text-warning"></i></div>
+          <div>
+            <i className="fas fa-star has-text-warning" />
+            <i className="fas fa-star has-text-warning" />
+            <i className="fas fa-star has-text-warning" />
+          </div>
         </div>
       </Link>
     </div>

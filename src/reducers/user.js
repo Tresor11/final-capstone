@@ -1,44 +1,47 @@
-import {getToken,saveToken,saveDetails,getDetails} from '../actions/index'
+import {
+  getToken, saveToken, saveDetails, getDetails,
+} from '../actions/index';
+
 const initialState = {
   loged_in: false,
   auth_token: getToken() || '',
-  details:getDetails() || {},
+  details: getDetails() || {},
   pending: false,
-  error: "",
+  error: '',
 };
 
 function userReducer(state = initialState, action) {
   switch (action.type) {
-    case "LOGIN":
-      saveToken(action.auth_token)
+    case 'LOGIN':
+      saveToken(action.auth_token);
       return {
         ...state,
         loged_in: true,
         auth_token: getToken(),
         pending: false,
       };
-    case "LOGOUT":
-      localStorage.clear()
+    case 'LOGOUT':
+      localStorage.clear();
       return {
         ...state,
         loged_in: false,
-        auth_token:'',
-        details:getDetails(),
+        auth_token: '',
+        details: getDetails(),
         token: getToken(),
       };
     case 'FETCH_USER_DETAILS':
-      saveDetails(action.details)
+      saveDetails(action.details);
       return {
         ...state,
-        details:getDetails()
-      }
-    case "LOGIN_USER_PENDING":
+        details: getDetails(),
+      };
+    case 'LOGIN_USER_PENDING':
       return {
         ...state,
         pending: true,
       };
     default:
-        return state;
+      return state;
   }
 }
 
