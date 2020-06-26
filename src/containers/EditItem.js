@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import ImageUploader from "react-images-upload";
 import editItem from "../actions/editItem";
 
 class EditItem extends React.Component {

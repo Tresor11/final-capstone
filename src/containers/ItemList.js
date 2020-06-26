@@ -15,7 +15,7 @@ const ItemList=(props)=>{
             <h4 className="is-title is-size-4 has-text-centered t-">Available Items</h4>
             <div className="wrap-list">
             <div className="item-list">
-            {store.items.products.map(el=><ItemPreview props={el} />)}
+            {store.items.products.map(el=><ItemPreview key={el.id} props={el} />)}
         </div>
         </div>
         </div>
