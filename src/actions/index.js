@@ -1,9 +1,9 @@
+/* eslint-disable camelcase */
 const fetchProductsPending = type => ({
   type,
 });
 
 const saveToken = token => {
-  console.log(`${token} being saved to the local storage`);
   localStorage.setItem('token', JSON.stringify(token));
 };
 
@@ -18,7 +18,6 @@ const getDetails = () => {
 
 const getToken = () => {
   const res = localStorage.getItem('token');
-  console.log('gotten it from the storage');
   return JSON.parse(res);
 };
 
@@ -35,10 +34,6 @@ const fetchProductsSuccess = products => ({
 const fetchProductsError = error => ({
   type: 'FETCH_PRODUCTS_ERROR',
   error,
-});
-const UPDATE_CATEGORY = category => ({
-  type: 'UPDATE_CATEGORY',
-  category,
 });
 
 const fetchSingleItem = details => ({
@@ -60,18 +55,20 @@ const FetchUserDetails = details => ({
   details,
 });
 
+const AddFavorite = () => ({ type: 'ADD_FAVORITE' });
+
 export {
   fetchProductsError,
   fetchProductsPending,
   FetchUserDetails,
   fetchProductsSuccess,
-  UPDATE_CATEGORY,
   fetchSingleItem,
   saveToken,
   LOGIN_USER,
   saveDetails,
   getDetails,
   removeFav,
+  AddFavorite,
   getToken,
   LOGOUT_USER,
 };

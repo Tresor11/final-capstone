@@ -1,4 +1,4 @@
-import { fetchProductsPending, fetchSingleItem, fetchProductsError } from './index';
+import { fetchProductsPending, fetchProductsError } from './index';
 
 function addFavorite(token, id) {
   return dispatch => {
@@ -10,13 +10,13 @@ function addFavorite(token, id) {
         Authorization: `Bearer ${token}`,
       },
     };
-    fetch(`http://localhost:3000/favorites/${id}`, requestOptions)
+    fetch(`https://intense-savannah-62345.herokuapp.com/favorites/${id}`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {
           throw res.error;
         }
-        console.log(res);
+        return res;
       })
       .catch(error => {
         dispatch(fetchProductsError(error));

@@ -27,19 +27,21 @@ class EditItem extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    const { store, editItem } = this.props;
-    editItem(this.state, store.user.auth_token, 1);
-    this.setState({
-      name: '',
-      price: '',
-      contact: '',
-      description: '',
-      image: '',
-    });
+    const { store, editItem, history } = this.props;
+    const callBack = () => {
+      history.push('/items');
+      this.setState({
+        name: '',
+        price: '',
+        contact: '',
+        description: '',
+        image: '',
+      });
+    };
+    editItem(this.state, store.user.auth_token, store.single.details.item.id, callBack);
   }
 
   render() {
-    console.log(this.props.store);
     const {
       name, description, contact, price,
     } = this.state;
@@ -166,6 +168,7 @@ EditItem.propTypes = {
     }),
   }).isRequired,
   editItem: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditItem);

@@ -34,6 +34,7 @@ ItemPreview.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
+  props: PropTypes.shape({}).isRequired,
 };
 
 export default ItemPreview;

@@ -3,7 +3,7 @@ import { fetchProductsPending, fetchProductsError, FetchUserDetails } from './in
 function fetchUser(token) {
   return dispatch => {
     dispatch(fetchProductsPending('FETCH_USER_PENDING'));
-    fetch('http://localhost:3000/profile', {
+    fetch('https://intense-savannah-62345.herokuapp.com/profile', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -14,7 +14,6 @@ function fetchUser(token) {
         if (res.error) {
           throw res.error;
         }
-        console.log(res);
         dispatch(FetchUserDetails(res));
       })
       .catch(error => {

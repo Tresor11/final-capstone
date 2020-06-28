@@ -1,5 +1,9 @@
-function editItem(data, token, id) {
+import { fetchProductsPending } from './index';
+import { inputValidation } from '../helper/index';
+
+function editItem(data, token, id, callBack) {
   return dispatch => {
+    dispatch(fetchProductsPending('EDIT_PRODUC_PENDING'));
     const event = JSON.stringify(data);
     const requestOptions = {
       method: 'PUT',
@@ -9,13 +13,18 @@ function editItem(data, token, id) {
       },
       body: event,
     };
-    fetch(`http://localhost:3000/items/${id}`, requestOptions)
+    fetch(`https://intense-savannah-62345.herokuapp.com/items/${id}`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {
           throw res.error;
         }
-        console.log(res);
+        if (res.id !== undefined) {
+          callBack();
+        } else {
+          inputValidation(res);
+        }
+        return res;
       })
       .catch(error => error);
   };

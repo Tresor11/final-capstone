@@ -14,9 +14,12 @@ const ItemDetails = props => {
     fetchSingle(store.user.auth_token, match.params.id, 'GET');
   }, [fetchSingle, store.user.auth_token, match.params.id]);
   const { single } = store;
-  console.log(single);
   const handleClick = () => {
-    addFavorite(store.user.auth_token, single.details.id);
+    if (single.details.liked === true) {
+      addFavorite(store.user.auth_token, single.details.item.id, 'DELETE');
+    } else {
+      addFavorite(store.user.auth_token, single.details.item.id, 'POST');
+    }
   };
   const handleDelete = () => {
     fetchSingle(store.user.auth_token, match.params.id, 'DELETE');
@@ -137,7 +140,9 @@ ItemDetails.propTypes = {
         favorites: PropTypes.arrayOf({}),
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.shape({}),
+          image: PropTypes.shape({
+            url: PropTypes.string,
+          }),
           name: PropTypes.string,
           email: PropTypes.string,
         }),

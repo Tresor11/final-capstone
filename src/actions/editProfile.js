@@ -1,7 +1,10 @@
-function editProfile(data, token) {
+import { fetchProductsPending } from './index';
+import { inputValidation } from '../helper/index';
+
+function editProfile(data, token, callBack) {
   return dispatch => {
+    dispatch(fetchProductsPending('EDIT_PROFILE_PENDING'));
     const event = JSON.stringify(data);
-    console.log(event);
     const requestOptions = {
       method: 'PUT',
       headers: {
@@ -10,13 +13,18 @@ function editProfile(data, token) {
       },
       body: event,
     };
-    fetch('http://localhost:3000/edit-profile', requestOptions)
+    fetch('https://intense-savannah-62345.herokuapp.com/edit-profile', requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {
           throw res.error;
         }
-        console.log(res);
+        if (res.id !== undefined) {
+          callBack();
+        } else {
+          inputValidation(res);
+        }
+        return res;
       })
       .catch(error => error);
   };

@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import editProfile from '../actions/editProfile';
+import Nav from './Nav';
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -27,76 +28,81 @@ class EditProfile extends React.Component {
   handleSubmit(ev) {
     const path = this.props.store.user.details.details.admin === true ? '/admin' : '/profile';
     ev.preventDefault();
-    this.props.editProfile(this.state, this.props.store.user.auth_token);
-    this.props.history.push(path);
+    const callBack = () => {
+      this.props.history.push(path);
+    };
+    this.props.editProfile(this.state, this.props.store.user.auth_token, callBack);
   }
 
   render() {
     const { name, email, password } = this.state;
     return (
-      <div className="wrap">
-        <div className="signup-form">
-          <h4 className="form-control new-book-text">CREATE ACCOUNT</h4>
-          <form className="form-control" onSubmit={this.handleSubmit}>
+      <div>
+        <Nav text="Edit Profile" />
+        <div className="wrap">
+          <div className="signup-form">
+            <h4 className="form-control new-book-text">CREATE ACCOUNT</h4>
+            <form className="form-control" onSubmit={this.handleSubmit}>
 
-            <div className="field">
-              <label className="label">Name</label>
-              <p className="control has-icons-left">
-                <input
-                  className="input"
-                  value={name}
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  onChange={this.handleChange}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-profile" />
-                </span>
-              </p>
-            </div>
+              <div className="field">
+                <label className="label">Name</label>
+                <p className="control has-icons-left">
+                  <input
+                    className="input"
+                    value={name}
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    onChange={this.handleChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-profile" />
+                  </span>
+                </p>
+              </div>
 
-            <div className="field">
-              <label className="label">Email</label>
-              <p className="control has-icons-left">
-                <input
-                  className="input"
-                  type="email"
-                  value={email}
-                  placeholder="Email"
-                  name="email"
-                  onChange={this.handleChange}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-envelope" />
-                </span>
-              </p>
-            </div>
+              <div className="field">
+                <label className="label">Email</label>
+                <p className="control has-icons-left">
+                  <input
+                    className="input"
+                    type="email"
+                    value={email}
+                    placeholder="Email"
+                    name="email"
+                    onChange={this.handleChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-envelope" />
+                  </span>
+                </p>
+              </div>
 
-            <div className="field">
-              <label className="label">Password</label>
-              <p className="control has-icons-left">
-                <input
-                  className="input"
-                  type="password"
-                  value={password}
-                  placeholder="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-lock" />
-                </span>
-              </p>
-            </div>
-            <div className="field">
-              <p className="control">
-                <button className="button is-success" type="submit">
-                  Update Profile
-                </button>
-              </p>
-            </div>
-          </form>
+              <div className="field">
+                <label className="label">Password</label>
+                <p className="control has-icons-left">
+                  <input
+                    className="input"
+                    type="password"
+                    value={password}
+                    placeholder="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-lock" />
+                  </span>
+                </p>
+              </div>
+              <div className="field">
+                <p className="control">
+                  <button className="button is-success" type="submit">
+                    Update Profile
+                  </button>
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );

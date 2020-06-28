@@ -14,6 +14,14 @@ const singleItemReducer = (state = initialState, action) => {
         ...state,
         pending: true,
       };
+    case 'ADD_FAVORITE':
+      return {
+        ...state,
+        details: {
+          ...state.details,
+          liked: !state.details.liked,
+        },
+      };
     case 'FETCH_SINGLE_SUCCESS':
       return {
         ...state,

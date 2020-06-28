@@ -11,7 +11,7 @@ function fetchSingle(token, id, method) {
       },
     };
 
-    fetch(`http://localhost:3000/items/${id}`, requestOptions)
+    fetch(`https://intense-savannah-62345.herokuapp.com/items/${id}`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {

@@ -1,6 +1,9 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 import {
   LOGIN_USER,
 } from './index';
+import { inputValidation } from '../helper/index';
 
 function createUser(data) {
   return dispatch => {
@@ -8,7 +11,7 @@ function createUser(data) {
     for (const name in data) {
       event.append(name, data[name]);
     }
-    fetch('http://localhost:3000/users',
+    fetch('https://intense-savannah-62345.herokuapp.com/users',
       {
         method: 'POST',
         body: event,
@@ -18,10 +21,12 @@ function createUser(data) {
         if (res.error) {
           throw (res.error);
         }
-        console.log(res);
         if (res.auth_token !== undefined) {
           dispatch(LOGIN_USER(res));
+        } else {
+          inputValidation(res);
         }
+        return res;
       })
       .catch(error => error);
   };

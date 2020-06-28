@@ -7,7 +7,7 @@ import {
 function loginUser(data) {
   return dispatch => {
     dispatch(fetchProductsPending('LOGIN_USER_PENDING'));
-    fetch('http://localhost:3000/auth/login',
+    fetch('https://intense-savannah-62345.herokuapp.com/auth/login',
       {
         method: 'POST',
         headers: {

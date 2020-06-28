@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import toggle from '../helper/index';
+import { toggle } from '../helper/index';
 import { LOGOUT_USER } from '../actions/index';
 
 const Nav = props => {

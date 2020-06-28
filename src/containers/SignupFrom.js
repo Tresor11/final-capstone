@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -30,9 +31,12 @@ class SignupForm extends React.Component {
     const { createUser } = this.props;
     ev.preventDefault();
     createUser(this.state);
-    this.setState({
-      name: '', email: '', password: '', password_confirmation: '',
-    });
+    const { store } = this.props;
+    if (store.user.auth_token !== '') {
+      this.setState({
+        name: '', email: '', password: '', password_confirmation: '',
+      });
+    }
   }
 
   handleChange(el) {
@@ -43,6 +47,9 @@ class SignupForm extends React.Component {
 
   render() {
     const { store, history, fetchUser } = this.props;
+    const {
+      name, email, password, password_confirmation,
+    } = this.state;
     if (store.user.auth_token !== '') {
       fetchUser(store.user.auth_token);
       history.push('/items');
@@ -55,76 +62,81 @@ class SignupForm extends React.Component {
 
             <div className="field">
               <label className="label">Name</label>
-              <p className="control has-icons-left">
+              <div className="control has-icons-left">
                 <input
                   className="input"
                   type="text"
                   required
                   placeholder="Name"
                   name="name"
+                  value={name}
                   onChange={this.handleChange}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-profile" />
                 </span>
-              </p>
+              </div>
             </div>
 
             <div className="field">
               <label className="label">Email</label>
-              <p className="control has-icons-left">
+              <div className="control has-icons-left">
                 <input
                   className="input"
                   type="email"
                   required
                   placeholder="Email"
+                  value={email}
                   name="email"
                   onChange={this.handleChange}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-envelope" />
                 </span>
-              </p>
+              </div>
             </div>
 
             <div className="field">
               <label className="label">Password</label>
-              <p className="control has-icons-left">
+              <div className="control has-icons-left">
                 <input
                   className="input"
                   type="password"
                   required
                   placeholder="password"
+                  value={password}
                   name="password"
                   onChange={this.handleChange}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-lock" />
                 </span>
-              </p>
+              </div>
             </div>
 
             <div className="field">
               <label className="label">Password confirmation</label>
-              <p className="control has-icons-left">
+              <div className="control has-icons-left">
                 <input
                   className="input"
                   type="password"
                   required
                   placeholder="password confirmation"
+                  value={password_confirmation}
                   name="password_confirmation"
                   onChange={this.handleChange}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-lock" />
                 </span>
-              </p>
+              </div>
             </div>
 
             <ImageUploader
               withIcon
               buttonText="Profile picture"
               onChange={this.onDrop}
+              required
               imgExtension={['.jpg', '.gif', '.png', '.gif']}
               maxFileSize={5242880}
             />

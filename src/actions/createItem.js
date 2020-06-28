@@ -1,7 +1,11 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
-function createItem(data, token) {
+import { fetchProductsPending } from './index';
+import { inputValidation } from '../helper/index';
+
+function createItem(data, token, callBack) {
   return dispatch => {
+    dispatch(fetchProductsPending('CREATE_ITEM_PENDING'));
     const event = new FormData();
     for (const name in data) {
       event.append(name, data[name]);
@@ -13,13 +17,17 @@ function createItem(data, token) {
       },
       body: event,
     };
-    fetch('http://localhost:3000/items', requestOptions)
+    fetch('https://intense-savannah-62345.herokuapp.com/items', requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {
           throw res.error;
         }
-        console.log(res);
+        if (res.id === undefined) {
+          inputValidation(res);
+        } else {
+          callBack();
+        }
       })
       .catch(error => error);
   };

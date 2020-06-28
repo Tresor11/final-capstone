@@ -33,18 +33,20 @@ class ItemForm extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    const { store, createItem } = this.props;
-    createItem(this.state, store.user.auth_token);
-    this.setState({
-      name: '',
-      price: '',
-      contact: '',
-      description: '',
-      image: '',
-    });
+    const { store, createItem, history } = this.props;
+    const callBack = () => {
+      this.setState({
+        name: '', contact: '', price: '', description: '', image: '',
+      });
+      history.push('/items');
+    };
+    createItem(this.state, store.user.auth_token, callBack);
   }
 
   render() {
+    const {
+      name, contact, description, price,
+    } = this.state;
     return (
       <div>
         <Nav text="New Item" />
@@ -61,6 +63,7 @@ class ItemForm extends React.Component {
                     required
                     placeholder="Name"
                     name="name"
+                    value={name}
                     onChange={this.handleChange}
                   />
                   <span className="icon is-small is-left">
@@ -78,6 +81,7 @@ class ItemForm extends React.Component {
                     required
                     placeholder="Price"
                     name="price"
+                    value={price}
                     onChange={this.handleChange}
                   />
                   <span className="icon is-small is-left">
@@ -93,6 +97,7 @@ class ItemForm extends React.Component {
                     className="input"
                     type="text"
                     required
+                    value={contact}
                     placeholder="contact"
                     name="contact"
                     onChange={this.handleChange}
@@ -109,6 +114,8 @@ class ItemForm extends React.Component {
                   <textarea
                     className="textarea"
                     name="description"
+                    value={description}
+                    isRequired
                     placeholder="Textarea"
                     onChange={this.handleChange}
                   />
@@ -159,6 +166,10 @@ ItemForm.propTypes = {
         }),
       }),
     }),
+  }).isRequired,
+  createItem: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
   }).isRequired,
 };
 

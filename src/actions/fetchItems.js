@@ -3,7 +3,7 @@ import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '
 function fetchItems(token) {
   return dispatch => {
     dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
-    fetch('http://localhost:3000/items', {
+    fetch('https://intense-savannah-62345.herokuapp.com/items', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
