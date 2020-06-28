@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import fetchSingle from '../actions/fetchSingle';
 import addFavorite from '../actions/addfavorite';
 import Nav from './Nav';
+import Spiner from '../components/Spiner';
 
 const ItemDetails = props => {
   const {
@@ -25,39 +26,47 @@ const ItemDetails = props => {
     fetchSingle(store.user.auth_token, match.params.id, 'DELETE');
     history.push('/items');
   };
+
+  const shouldComponentRender = () => {
+    if (store.single.pending === true || single.details.item.name === undefined) return false;
+    return true;
+  };
+
   return (
     <div>
       <Nav text={single.details.item.name} />
       <div className="wrap-details">
         <div className="item-details shadow">
-          <div className="image">
-            <img
-              src="https://res-3.cloudinary.com/tresor11/image/upload/v1592940283/h50xxxqprr5fqjau9oi0.png"
-              alt="item"
-            />
-            <div className="basic-info">
-              <div className="user-image">
-                <div
-                  className="thumb"
-                  style={{
-                    backgroundImage: `url(${store.user.details.details.image.url})`,
-                  }}
-                />
-                <div>
-                  <h4>{store.user.details.details.name}</h4>
+          {shouldComponentRender() === true ? (
+            <div className="image">
+              <img
+                src="https://res-3.cloudinary.com/tresor11/image/upload/v1592940283/h50xxxqprr5fqjau9oi0.png"
+                alt="item"
+              />
+              <div className="basic-info">
+                <div className="user-image">
+                  <div
+                    className="thumb"
+                    style={{
+                      backgroundImage: `url(${store.user.details.details.image.url})`,
+                    }}
+                  />
                   <div>
-                    <i className="fas fa-star has-text-warning" />
-                    <i className="fas fa-star has-text-warning" />
-                    <i className="fas fa-star has-text-warning" />
+                    <h4>{store.user.details.details.name}</h4>
+                    <div>
+                      <i className="fas fa-star has-text-warning" />
+                      <i className="fas fa-star has-text-warning" />
+                      <i className="fas fa-star has-text-warning" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="price">
-                $
-                {single.details.item.price}
+                <div className="price">
+                  $
+                  {single.details.item.price}
+                </div>
               </div>
             </div>
-          </div>
+          ) : <Spiner />}
           <div className="full-info">
             <div>
               <h4>About this item</h4>
@@ -121,6 +130,7 @@ ItemDetails.propTypes = {
   }).isRequired,
   store: PropTypes.shape({
     single: PropTypes.shape({
+      pending: PropTypes.bool.isRequired,
       details: PropTypes.shape({
         liked: PropTypes.any,
         price: PropTypes.number,

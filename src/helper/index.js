@@ -32,4 +32,12 @@ const inputValidation = ({ message }) => {
     }
   }
 };
-export { toggle, inputValidation };
+
+const loadingIcon = () => {
+  const buttons = document.querySelectorAll('button');
+  for (const i in buttons) {
+    buttons[i].className = `${buttons[i].className} is-disabled is-info is-loading`;
+  }
+};
+
+export { toggle, inputValidation, loadingIcon };

@@ -1,6 +1,7 @@
 body {
   background-color: rgb(236, 236, 236);
   min-height: 100vh;
+  position: relative;
 }
 
 nav {
@@ -79,8 +80,8 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     clip-path: circle(25px at 89% 5%);
-    transition: all 1s ease;
     -webkit-clip-path: circle(25px at 89% 5%);
+    transition: all 0.5s ease-in-out;
     li {
       padding: 20% 0;
       font-weight: bolder;

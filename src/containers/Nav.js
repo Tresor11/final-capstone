@@ -39,8 +39,8 @@ const Nav = props => {
           <Link to="/">Logout</Link>
         </li>
       </ul>
-      <div className="profile has-text-danger has-background-black">
-        <i className="fas fa-lock" />
+      <div className="profile has-text-white has-background-black">
+        <i className="fas fa-arrow-left" />
       </div>
     </nav>
   );

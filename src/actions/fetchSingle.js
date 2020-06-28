@@ -2,7 +2,7 @@ import { fetchProductsPending, fetchSingleItem, fetchProductsError } from './ind
 
 function fetchSingle(token, id, method) {
   return dispatch => {
-    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
+    dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
     const requestOptions = {
       method,
       headers: {

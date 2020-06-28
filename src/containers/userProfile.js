@@ -6,6 +6,7 @@ import PropTypes, { shape } from 'prop-types';
 import ItemPreview from '../components/ItemPreview';
 import fetchUser from '../actions/fetchUserDetails';
 import Nav from './Nav';
+import Spiner from '../components/Spiner';
 
 const UserProfile = props => {
   const { store, fetchUser } = props;
@@ -13,6 +14,16 @@ const UserProfile = props => {
   useEffect(() => {
     fetchUser(store.user.auth_token);
   }, [fetchUser, store.user.auth_token]);
+
+  const shouldComponentRender = () => {
+    if (store.user.pending === true || data.details.image.url === undefined) return false;
+    return true;
+  };
+
+  if (!shouldComponentRender()) {
+    return (<Spiner />);
+  }
+
   return (
     <div>
       <Nav text="Profile" />
@@ -76,6 +87,7 @@ UserProfile.propTypes = {
   store: PropTypes.shape({
     items: PropTypes.arrayOf(shape({})),
     user: PropTypes.shape({
+      pending: PropTypes.bool.isRequired,
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
         favorites: PropTypes.arrayOf(shape({})),

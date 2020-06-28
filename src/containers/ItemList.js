@@ -4,20 +4,29 @@ import PropTypes from 'prop-types';
 import fetchItems from '../actions/fetchItems';
 import ItemPreview from '../components/ItemPreview';
 import Nav from './Nav';
+import Spiner from '../components/Spiner';
 
 const ItemList = props => {
   const { fetchItems, store } = props;
   useEffect(() => {
     fetchItems(store.user.auth_token);
   }, [fetchItems, store.user.auth_token]);
+
+  const shouldComponentRender = () => {
+    if (store.items.pending === true || store.items.products.length < 1) return false;
+    return true;
+  };
+
   return (
     <div>
       <Nav text="Items list" />
-      <h4 className="is-title is-size-4 has-text-centered t-">Available Items</h4>
+      <h4 className="is-title is-size-4 has-text-centered welcome">Available Items</h4>
       <div className="wrap-list">
-        <div className="item-list">
-          {store.items.products.map(el => <ItemPreview key={el.id} props={el} />)}
-        </div>
+        {shouldComponentRender() === true ? (
+          <div className="item-list">
+            {store.items.products.map(el => <ItemPreview key={el.id} props={el} />)}
+          </div>
+        ) : <Spiner /> }
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { fetchProductsPending, fetchProductsError, AddFavorite } from './index';
 
 function addFavorite(token, id, method) {
   return dispatch => {
-    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
+    dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
     const raw = JSON.stringify({ item_id: `${id}` });
     const requestOptions = {
       method,

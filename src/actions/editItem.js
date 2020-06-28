@@ -3,7 +3,7 @@ import { inputValidation } from '../helper/index';
 
 function editItem(data, token, id, callBack) {
   return dispatch => {
-    dispatch(fetchProductsPending('EDIT_PRODUC_PENDING'));
+    dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
     const event = JSON.stringify(data);
     const requestOptions = {
       method: 'PUT',
