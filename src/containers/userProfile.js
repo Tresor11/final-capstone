@@ -64,6 +64,20 @@ const UserProfile = props => {
         />
       </div>
 
+      <hr />
+
+      <div className="credential shadow">
+        <div className="control">
+          <div className="tags has-addons">
+            <span className="tag is-dark">Estimated Expense</span>
+            <span className="tag is-warning">
+              {data.expense}
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+
       <h4 className="is-title is-size-4 has-text-centered mt-4 mb-4">
         My favotites
         {' '}
