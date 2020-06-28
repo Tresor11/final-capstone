@@ -30,12 +30,12 @@ const UserProfile = props => {
       <div className="credential shadow">
         <img src={data.details.image.url} alt="profile" />
         <div>
-          <p>Name :</p>
+          <p className="tag is-rounded">Name :</p>
           {' '}
           <p>{data.details.name}</p>
         </div>
         <div>
-          <p>Email :</p>
+          <p className="tag is-rounded">Email :</p>
           {' '}
           <p>{data.details.email}</p>
           {' '}

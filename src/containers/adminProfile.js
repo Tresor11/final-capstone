@@ -19,21 +19,21 @@ const AdminProfile = props => {
       <div className="credential shadow">
         <img src={data.details.image.url} alt="profile" />
         <div>
-          <p>Name :</p>
+          <p className="tag is-rounded">Name :</p>
           {' '}
           <p>{data.details.name}</p>
         </div>
         <div>
-          <p>Email :</p>
+          <p className="tag is-rounded">Email :</p>
           {' '}
           <p>{data.details.email}</p>
           {' '}
         </div>
-        <div>
-          <p>Admin :</p>
-          {' '}
-          <p>Yes</p>
-          {' '}
+        <div className="control">
+          <div className="tags has-addons">
+            <span className="tag is-dark">Admin</span>
+            <span className="tag is-success">Yes</span>
+          </div>
         </div>
         <div>
           <button className="button" type="button">
@@ -52,6 +52,7 @@ const AdminProfile = props => {
           data={[
             ['item', 'numer'],
             ['Liked items', data.liked.length],
+            // eslint-disable-next-line react/prop-types
             ['Total items', store.items.products.length],
           ]}
           options={{
@@ -61,22 +62,14 @@ const AdminProfile = props => {
         />
         <hr />
         <div className="credential shadow">
-          <div>
-            <p>Name :</p>
-            {' '}
-            <p>{data.details.name}</p>
-          </div>
-          <div>
-            <p>Email :</p>
-            {' '}
-            <p>{data.details.email}</p>
-            {' '}
-          </div>
-          <div>
-            <p>Admin :</p>
-            {' '}
-            <p>Yes</p>
-            {' '}
+          <div className="control">
+            <div className="tags has-addons">
+              <span className="tag is-dark">Estimated revenue</span>
+              <span className="tag is-warning">
+                {data.income}
+                $
+              </span>
+            </div>
           </div>
           <div>
             <button className="button" type="button">
@@ -88,12 +81,12 @@ const AdminProfile = props => {
       </div>
 
       <h4 className="is-title is-size-4 has-text-centered mt-4 mb-4">
-        My favotites
+        Liked Items
         {' '}
         <i className="fas fa-heart has-text-danger" aria-hidden="true" />
         {' '}
       </h4>
-      {store.items.products.map(el => (
+      {data.liked.map(el => (
         <ItemPreview key={el.id} props={el} />
       ))}
     </div>
@@ -101,7 +94,23 @@ const AdminProfile = props => {
 };
 
 AdminProfile.propTypes = {
-  store: PropTypes.objectOf.isRequired,
+  store: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      products: PropTypes.arrayOf(PropTypes.shape({})),
+    })),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        liked: PropTypes.arrayOf(PropTypes.shape({})),
+        income: PropTypes.number,
+        details: PropTypes.shape({
+          image: PropTypes.string.isRequired,
+          name: PropTypes.string,
+          email: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
   fetchUser: PropTypes.func.isRequired,
 };
 
