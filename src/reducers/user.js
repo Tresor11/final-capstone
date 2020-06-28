@@ -4,8 +4,10 @@ import {
 
 const initialState = {
   loged_in: false,
-  auth_token: getToken() || '',
-  details: getDetails() || {},
+  auth_token: getToken() !== null ? getToken() : '',
+  details: getDetails() !== null ? getDetails() : {
+    details: {},
+  },
   pending: false,
   error: '',
 };

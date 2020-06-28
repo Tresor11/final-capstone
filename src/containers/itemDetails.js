@@ -14,6 +14,7 @@ const ItemDetails = props => {
     fetchSingle(store.user.auth_token, match.params.id, 'GET');
   }, [fetchSingle, store.user.auth_token, match.params.id]);
   const { single } = store;
+  console.log(single);
   const handleClick = () => {
     addFavorite(store.user.auth_token, single.details.id);
   };
@@ -50,7 +51,7 @@ const ItemDetails = props => {
               </div>
               <div className="price">
                 $
-                {single.details.price}
+                {single.details.item.price}
               </div>
             </div>
           </div>
@@ -109,7 +110,7 @@ const mapStateToProps = store => ({ store });
 ItemDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     }),
   }).isRequired,
   history: PropTypes.shape({
@@ -118,7 +119,7 @@ ItemDetails.propTypes = {
   store: PropTypes.shape({
     single: PropTypes.shape({
       details: PropTypes.shape({
-        liked: PropTypes.bool,
+        liked: PropTypes.any,
         price: PropTypes.number,
         id: PropTypes.number,
         item: PropTypes.shape({
@@ -130,14 +131,13 @@ ItemDetails.propTypes = {
         }),
       }),
     }),
-    items: PropTypes.arrayOf({}),
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
         favorites: PropTypes.arrayOf({}),
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.string,
+          image: PropTypes.shape({}),
           name: PropTypes.string,
           email: PropTypes.string,
         }),

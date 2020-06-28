@@ -17,8 +17,8 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // eslint-disable-next-line react/no-deprecated
-  componentWillMount() {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
     const { store, history } = this.props;
     if (store.user.auth_token !== '') {
       history.push('/items');

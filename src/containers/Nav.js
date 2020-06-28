@@ -15,8 +15,10 @@ const Nav = props => {
     logout();
   };
   let path = '/profile';
-  if (store.user.details.details !== undefined) {
-    path = store.user.details.details.admin === true ? '/admin' : '/profile';
+  if (store.user.details !== null) {
+    if (store.user.details.details !== null) {
+      path = store.user.details.details.admin === true ? '/admin' : '/profile';
+    }
   }
   return (
     <nav>

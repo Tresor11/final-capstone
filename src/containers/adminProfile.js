@@ -42,6 +42,7 @@ const AdminProfile = props => {
           </button>
         </div>
       </div>
+
       <div className="chart shadow">
         <Chart
           width="100%"
@@ -58,6 +59,32 @@ const AdminProfile = props => {
           }}
           rootProps={{ 'data-testid': '1' }}
         />
+        <hr />
+        <div className="credential shadow">
+          <div>
+            <p>Name :</p>
+            {' '}
+            <p>{data.details.name}</p>
+          </div>
+          <div>
+            <p>Email :</p>
+            {' '}
+            <p>{data.details.email}</p>
+            {' '}
+          </div>
+          <div>
+            <p>Admin :</p>
+            {' '}
+            <p>Yes</p>
+            {' '}
+          </div>
+          <div>
+            <button className="button" type="button">
+              {' '}
+              <Link to="/newitem"> New Item </Link>
+            </button>
+          </div>
+        </div>
       </div>
 
       <h4 className="is-title is-size-4 has-text-centered mt-4 mb-4">

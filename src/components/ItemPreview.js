@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const ItemPreview = props => {
+const ItemPreview = ({ props }) => {
   const { name, price, id } = props;
   return (
     <div className="preview column shadow">
