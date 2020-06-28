@@ -18,7 +18,10 @@ function createUser(data) {
         if (res.error) {
           throw (res.error);
         }
-        dispatch(LOGIN_USER(res));
+        console.log(res);
+        if (res.auth_token !== undefined) {
+          dispatch(LOGIN_USER(res));
+        }
       })
       .catch(error => error);
   };

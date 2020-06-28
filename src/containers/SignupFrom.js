@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ImageUploader from 'react-images-upload';
 import createUser from '../actions/signup';
+import fetchUser from '../actions/fetchUserDetails';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -20,27 +22,31 @@ class SignupForm extends React.Component {
     this.onDrop = this.onDrop.bind(this);
   }
 
-  handleChange(el) {
-    const newSate = el.target.value;
-    const prevState = this.state;
-    this.setState({ ...prevState, [el.target.name]: newSate });
-    console.log(this.state);
+  onDrop(picture) {
+    this.setState({ image: picture[0] });
   }
 
   handleSubmit(ev) {
+    const { createUser } = this.props;
     ev.preventDefault();
-    this.props.createUser(this.state);
+    createUser(this.state);
     this.setState({
       name: '', email: '', password: '', password_confirmation: '',
     });
   }
 
-  onDrop(picture) {
-    this.setState({ image: picture[0] });
-    console.log(this.state);
+  handleChange(el) {
+    const newSate = el.target.value;
+    const prevState = this.state;
+    this.setState({ ...prevState, [el.target.name]: newSate });
   }
 
   render() {
+    const { store, history, fetchUser } = this.props;
+    if (store.user.auth_token !== '') {
+      fetchUser(store.user.auth_token);
+      history.push('/items');
+    }
     return (
       <div className="wrap">
         <div className="signup-form">
@@ -54,7 +60,6 @@ class SignupForm extends React.Component {
                   className="input"
                   type="text"
                   required
-                  className="input"
                   placeholder="Name"
                   name="name"
                   onChange={this.handleChange}
@@ -72,7 +77,6 @@ class SignupForm extends React.Component {
                   className="input"
                   type="email"
                   required
-                  className="input"
                   placeholder="Email"
                   name="email"
                   onChange={this.handleChange}
@@ -89,7 +93,6 @@ class SignupForm extends React.Component {
                 <input
                   className="input"
                   type="password"
-                  className="input"
                   required
                   placeholder="password"
                   name="password"
@@ -108,7 +111,6 @@ class SignupForm extends React.Component {
                   className="input"
                   type="password"
                   required
-                  className="input"
                   placeholder="password confirmation"
                   name="password_confirmation"
                   onChange={this.handleChange}
@@ -144,11 +146,23 @@ class SignupForm extends React.Component {
 }
 
 SignupForm.propTypes = {
-  create: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired,
+  fetchUser: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    user: PropTypes.shape({
+      auth_token: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 const mapDispatchToProps = {
   createUser,
+  fetchUser,
 };
 
-export default connect(null, mapDispatchToProps)(SignupForm);
+const mapStateToProps = store => ({ store });
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

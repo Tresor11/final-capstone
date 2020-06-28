@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 function createItem(data, token) {
   return dispatch => {
     const event = new FormData();

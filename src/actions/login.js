@@ -20,9 +20,9 @@ function loginUser(data) {
         if (res.error) {
           throw (res.error);
         }
-        console.log('================getting the current user===============================');
-        console.log(res);
-        dispatch(LOGIN_USER(res));
+        if (res.auth_token !== undefined) {
+          dispatch(LOGIN_USER(res));
+        }
         return res;
       })
       .catch(error => {

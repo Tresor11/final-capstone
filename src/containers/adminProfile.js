@@ -10,7 +10,6 @@ import Nav from './Nav';
 const AdminProfile = props => {
   const { store, fetchUser } = props;
   const data = store.user.details;
-  console.log(store);
   useEffect(() => {
     fetchUser(store.user.auth_token);
   }, [fetchUser, store.user.auth_token]);
@@ -37,7 +36,7 @@ const AdminProfile = props => {
           {' '}
         </div>
         <div>
-          <button className="button">
+          <button className="button" type="button">
             {' '}
             <Link to="/edit-profile"> Edit </Link>
           </button>
@@ -68,16 +67,16 @@ const AdminProfile = props => {
         {' '}
       </h4>
       {store.items.products.map(el => (
-        <ItemPreview props={el} />
+        <ItemPreview key={el.id} props={el} />
       ))}
     </div>
   );
 };
 
-// AdminProfile.propTypes = {
-//   pending: PropTypes.bool.isRequired,
-//   getCategories: PropTypes.func.isRequired,
-// };
+AdminProfile.propTypes = {
+  store: PropTypes.objectOf.isRequired,
+  fetchUser: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = {
   fetchUser,

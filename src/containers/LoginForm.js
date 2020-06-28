@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -16,12 +17,19 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
     const { store, history } = this.props;
-    console.log(store);
     if (store.user.auth_token !== '') {
       history.push('/items');
     }
+  }
+
+  handleSubmit(ev) {
+    const { loginUser } = this.props;
+    ev.preventDefault();
+    loginUser(this.state);
+    this.setState({ email: '', password: '' });
   }
 
   handleChange(el) {
@@ -30,16 +38,9 @@ class LoginForm extends React.Component {
     this.setState({ ...prevState, [el.target.name]: newSate });
   }
 
-  handleSubmit(ev) {
-    ev.preventDefault();
-    this.props.loginUser(this.state);
-    this.setState({ email: '', password: '' });
-  }
-
   render() {
     const { store, history, fetchUser } = this.props;
     const { email, password } = this.state;
-    console.log(this.props);
     if (store.user.auth_token !== '') {
       fetchUser(store.user.auth_token);
       history.push('/items');
@@ -49,12 +50,10 @@ class LoginForm extends React.Component {
         <div className="login-form">
           <h4 className="form-control new-book-text is-size-4">LOGIN</h4>
           <form className="form-control" onSubmit={this.handleSubmit}>
-
             <div className="field">
               <label className="label">Email</label>
               <p className="control has-icons-left">
                 <input
-                  className="input"
                   type="email"
                   value={email}
                   required
@@ -73,7 +72,6 @@ class LoginForm extends React.Component {
               <label className="label">Password</label>
               <p className="control has-icons-left">
                 <input
-                  className="input"
                   type="password"
                   value={password}
                   className="input"
@@ -97,16 +95,27 @@ class LoginForm extends React.Component {
             </div>
           </form>
           <h4>or</h4>
-          <Link to="/signup" className="button is-outlined has-text-primary">Signup</Link>
+          <Link to="/signup" className="button is-outlined has-text-primary">
+            Signup
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-// LoginForm.propTypes = {
-//   create: PropTypes.func.isRequired,
-// };
+LoginForm.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  fetchUser: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    user: PropTypes.shape({
+      auth_token: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 const mapDispatchToProps = {
   loginUser,

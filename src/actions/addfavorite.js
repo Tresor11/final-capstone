@@ -1,4 +1,4 @@
-import { fetchProductsPending, fetchSingleItem, fetchProductsError } from './index';
+import { fetchProductsPending, fetchProductsError } from './index';
 
 function addFavorite(token, id) {
   return dispatch => {

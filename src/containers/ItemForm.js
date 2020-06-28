@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ImageUploader from 'react-images-upload';
 import createItem from '../actions/createItem';
 
@@ -18,16 +20,21 @@ class ItemForm extends React.Component {
     this.onDrop = this.onDrop.bind(this);
   }
 
+  onDrop(picture) {
+    this.setState({ image: picture[0] });
+  }
+
   handleChange(el) {
     const newSate = el.target.value;
     const prevState = this.state;
     this.setState({ ...prevState, [el.target.name]: newSate });
-    console.log(this.state);
   }
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.createItem(this.state, this.props.state.user.auth_token);
+    const createItem = this.props;
+    const { store } = this.props;
+    createItem(this.state, store.user.auth_token);
     this.setState({
       name: '',
       price: '',
@@ -37,13 +44,7 @@ class ItemForm extends React.Component {
     });
   }
 
-  onDrop(picture) {
-    this.setState({ image: picture[0] });
-    console.log(this.state);
-  }
-
   render() {
-    console.log(this.props);
     return (
       <div>
         <h4 className="form-control new-book-text">ADD NEW BOOK</h4>
@@ -55,7 +56,6 @@ class ItemForm extends React.Component {
                 className="input"
                 type="text"
                 required
-                className="input"
                 placeholder="Name"
                 name="name"
                 onChange={this.handleChange}
@@ -73,7 +73,6 @@ class ItemForm extends React.Component {
                 className="input"
                 type="number"
                 required
-                className="input"
                 placeholder="Price"
                 name="price"
                 onChange={this.handleChange}
@@ -91,7 +90,6 @@ class ItemForm extends React.Component {
                 className="input"
                 type="text"
                 required
-                className="input"
                 placeholder="contact"
                 name="contact"
                 onChange={this.handleChange}
@@ -139,6 +137,24 @@ const mapStateToProps = state => ({ state });
 
 const mapDispatchToProps = {
   createItem,
+};
+
+ItemForm.propTypes = {
+  store: PropTypes.shape({
+    items: PropTypes.arrayOf({}),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        favorites: PropTypes.arrayOf({}),
+        details: PropTypes.shape({
+          admin: PropTypes.bool,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          email: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemForm);

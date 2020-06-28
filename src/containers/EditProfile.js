@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -29,6 +32,7 @@ class EditProfile extends React.Component {
   }
 
   render() {
+    const { name, email, password } = this.state;
     return (
       <div className="wrap">
         <div className="signup-form">
@@ -40,9 +44,8 @@ class EditProfile extends React.Component {
               <p className="control has-icons-left">
                 <input
                   className="input"
-                  value={this.state.name}
+                  value={name}
                   type="text"
-                  className="input"
                   placeholder="Name"
                   name="name"
                   onChange={this.handleChange}
@@ -59,8 +62,7 @@ class EditProfile extends React.Component {
                 <input
                   className="input"
                   type="email"
-                  value={this.state.email}
-                  className="input"
+                  value={email}
                   placeholder="Email"
                   name="email"
                   onChange={this.handleChange}
@@ -77,8 +79,7 @@ class EditProfile extends React.Component {
                 <input
                   className="input"
                   type="password"
-                  className="input"
-                  value={this.state.password}
+                  value={password}
                   placeholder="password"
                   name="password"
                   onChange={this.handleChange}
@@ -103,7 +104,45 @@ class EditProfile extends React.Component {
 }
 
 EditProfile.propTypes = {
-  create: PropTypes.func.isRequired,
+  editProfile: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  store: PropTypes.shape({
+    single: PropTypes.shape({
+      details: PropTypes.shape({
+        liked: PropTypes.bool,
+        price: PropTypes.number,
+        id: PropTypes.number,
+        item: PropTypes.shape({
+          id: PropTypes.number,
+          description: PropTypes.string,
+          contact: PropTypes.string,
+          price: PropTypes.number,
+          name: PropTypes.string,
+        }),
+      }),
+    }),
+    items: PropTypes.arrayOf({}),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        favorites: PropTypes.arrayOf({}),
+        details: PropTypes.shape({
+          admin: PropTypes.bool,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          email: PropTypes.string,
+          password: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
 };
 
 const mapStateToProps = store => ({ store });

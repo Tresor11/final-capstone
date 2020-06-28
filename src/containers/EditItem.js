@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import editItem from '../actions/editItem';
 
 class EditItem extends React.Component {
@@ -10,22 +12,23 @@ class EditItem extends React.Component {
       price: '',
       contact: '',
       description: '',
-      image: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   handleChange(el) {
     const newSate = el.target.value;
     const prevState = this.state;
     this.setState({ ...prevState, [el.target.name]: newSate });
-    console.log(this.state);
   }
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.editItem(this.state, this.props.store.user.auth_token, this.props.store.single.id);
+    const createItem = this.props;
+    const { store } = this.props;
+    createItem(this.state, store.user.auth_token);
     this.setState({
       name: '',
       price: '',
@@ -36,10 +39,9 @@ class EditItem extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <h4 className="form-control new-book-text">EDIT ITEM</h4>
+        <h4 className="form-control new-book-text">ADD NEW BOOK</h4>
         <form className="form-control" onSubmit={this.handleSubmit}>
           <div className="field">
             <label className="label">Name</label>
@@ -48,7 +50,6 @@ class EditItem extends React.Component {
                 className="input"
                 type="text"
                 required
-                className="input"
                 placeholder="Name"
                 name="name"
                 onChange={this.handleChange}
@@ -66,7 +67,6 @@ class EditItem extends React.Component {
                 className="input"
                 type="number"
                 required
-                className="input"
                 placeholder="Price"
                 name="price"
                 onChange={this.handleChange}
@@ -84,7 +84,6 @@ class EditItem extends React.Component {
                 className="input"
                 type="text"
                 required
-                className="input"
                 placeholder="contact"
                 name="contact"
                 onChange={this.handleChange}
@@ -110,7 +109,7 @@ class EditItem extends React.Component {
           <div className="field">
             <p className="control">
               <button className="button is-success" type="submit">
-                Update Item
+                Login
               </button>
             </p>
           </div>
@@ -124,6 +123,24 @@ const mapStateToProps = state => ({ state });
 
 const mapDispatchToProps = {
   editItem,
+};
+
+EditItem.propTypes = {
+  store: PropTypes.shape({
+    items: PropTypes.arrayOf({}),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        favorites: PropTypes.arrayOf({}),
+        details: PropTypes.shape({
+          admin: PropTypes.bool,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          email: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditItem);

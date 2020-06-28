@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import fetchItems from '../actions/fetchItems';
 import ItemPreview from '../components/ItemPreview';
 import Nav from './Nav';
@@ -27,5 +28,24 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = store => ({ store });
+
+ItemList.propTypes = {
+  store: PropTypes.shape({
+    items: PropTypes.arrayOf({}),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        favorites: PropTypes.arrayOf({}),
+        details: PropTypes.shape({
+          admin: PropTypes.bool,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          email: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
+  fetchItems: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemList);

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const ItemPreview = ({ props }) => {
+const ItemPreview = props => {
   const { name, price, id } = props;
   return (
     <div className="preview column shadow">
@@ -27,6 +28,12 @@ const ItemPreview = ({ props }) => {
       </Link>
     </div>
   );
+};
+
+ItemPreview.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default ItemPreview;

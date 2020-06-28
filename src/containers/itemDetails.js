@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import fetchSingle from '../actions/fetchSingle';
 import addFavorite from '../actions/addfavorite';
 import Nav from './Nav';
@@ -65,7 +66,7 @@ const ItemDetails = props => {
           </div>
           {store.user.details.details.admin === true ? (
             <div className="admin-action">
-              <button className="edit">
+              <button className="edit" type="button">
                 <Link to={`/items/${single.details.item.id}/edit`}>Edit item</Link>
               </button>
 
@@ -73,6 +74,7 @@ const ItemDetails = props => {
                 className={`remove
             }`}
                 onClick={handleDelete}
+                type="button"
               >
                 Delete item
               </button>
@@ -83,6 +85,7 @@ const ItemDetails = props => {
                 single.details.liked === true ? 'remove' : 'add'
               }`}
               onClick={handleClick}
+              type="button"
             >
               {' '}
               {single.details.liked === true
@@ -102,5 +105,47 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = store => ({ store });
+
+ItemDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  store: PropTypes.shape({
+    single: PropTypes.shape({
+      details: PropTypes.shape({
+        liked: PropTypes.bool,
+        price: PropTypes.number,
+        id: PropTypes.number,
+        item: PropTypes.shape({
+          id: PropTypes.number,
+          description: PropTypes.string,
+          contact: PropTypes.string,
+          price: PropTypes.number,
+          name: PropTypes.string,
+        }),
+      }),
+    }),
+    items: PropTypes.arrayOf({}),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        favorites: PropTypes.arrayOf({}),
+        details: PropTypes.shape({
+          admin: PropTypes.bool,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          email: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
+  fetchSingle: PropTypes.func.isRequired,
+  addFavorite: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetails);

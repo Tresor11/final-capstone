@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Chart } from 'react-google-charts';
 import { Link } from 'react-router-dom';
+import PropTypes, { shape } from 'prop-types';
 import ItemPreview from '../components/ItemPreview';
 import fetchUser from '../actions/fetchUserDetails';
 import Nav from './Nav';
@@ -9,12 +10,9 @@ import Nav from './Nav';
 const UserProfile = props => {
   const { store, fetchUser } = props;
   const data = store.user.details;
-  console.log();
   useEffect(() => {
     fetchUser(store.user.auth_token);
   }, [fetchUser, store.user.auth_token]);
-  if (store.user.details.admin === true) {
-  }
   return (
     <div>
       <Nav text="Profile" />
@@ -32,7 +30,7 @@ const UserProfile = props => {
           {' '}
         </div>
         <div>
-          <button className="button">
+          <button className="button" type="button">
             <Link to="/edit-profile"> Edit </Link>
           </button>
         </div>
@@ -62,7 +60,7 @@ const UserProfile = props => {
         {' '}
       </h4>
       {data.favorites.map(el => (
-        <ItemPreview props={el} />
+        <ItemPreview props={el} key={el.id} />
       ))}
     </div>
   );
@@ -73,5 +71,24 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = store => ({ store });
+
+UserProfile.propTypes = {
+  store: PropTypes.shape({
+    items: PropTypes.arrayOf(shape({})),
+    user: PropTypes.shape({
+      auth_token: PropTypes.string.isRequired,
+      details: PropTypes.shape({
+        favorites: PropTypes.arrayOf(shape({})),
+        details: PropTypes.shape({
+          admin: PropTypes.bool,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          email: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
+  fetchUser: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
