@@ -1,10 +1,11 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 import { fetchProductsPending } from './index';
-import { inputValidation } from '../helper/index';
+import { inputValidation, loadingIcon } from '../helper/index';
 
 function createItem(data, token, callBack) {
   return dispatch => {
+    loadingIcon();
     dispatch(fetchProductsPending('CREATE_ITEM_PENDING'));
     const event = new FormData();
     for (const name in data) {
@@ -23,6 +24,7 @@ function createItem(data, token, callBack) {
         if (res.error) {
           throw res.error;
         }
+        loadingIcon('');
         if (res.id === undefined) {
           inputValidation(res);
         } else {

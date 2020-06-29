@@ -6,6 +6,7 @@ import fetchSingle from '../actions/fetchSingle';
 import addFavorite from '../actions/addfavorite';
 import Nav from './Nav';
 import Spiner from '../components/Spiner';
+import { loadingIcon } from '../helper/index';
 
 const ItemDetails = props => {
   const {
@@ -31,6 +32,8 @@ const ItemDetails = props => {
     if (store.single.pending === true || single.details.item.name === undefined) return false;
     return true;
   };
+
+  loadingIcon();
 
   return (
     <div>
@@ -150,7 +153,7 @@ ItemDetails.propTypes = {
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
-        favorites: PropTypes.arrayOf({}),
+        favorites: PropTypes.arrayOf(PropTypes.shape({})),
         details: PropTypes.shape({
           admin: PropTypes.bool,
           image: PropTypes.shape({

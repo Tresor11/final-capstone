@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import loginUser from '../actions/login';
 import fetchUser from '../actions/fetchUserDetails';
+import { loadingIcon } from '../helper/index';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class LoginForm extends React.Component {
   componentDidUpdate() {
     const { store, history, fetchUser } = this.props;
     if (store.user.auth_token !== '') {
+      loadingIcon();
       fetchUser(store.user.auth_token);
       history.push('/items');
     }

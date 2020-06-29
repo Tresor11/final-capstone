@@ -3,7 +3,7 @@
 import {
   LOGIN_USER,
 } from './index';
-import { inputValidation } from '../helper/index';
+import { inputValidation, loadingIcon } from '../helper/index';
 
 function createUser(data) {
   return dispatch => {
@@ -22,6 +22,7 @@ function createUser(data) {
           throw (res.error);
         }
         if (res.auth_token !== undefined) {
+          loadingIcon();
           dispatch(LOGIN_USER(res));
         } else {
           inputValidation(res);

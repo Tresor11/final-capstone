@@ -6,16 +6,6 @@ const toggle = () => {
   navLinks[0].classList.toggle('open');
 };
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-//     $notification = $delete.parentNode;
-
-//     $delete.addEventListener('click', () => {
-//       $notification.parentNode.removeChild($notification);
-//     });
-//   });
-// });
-
 const inputValidation = ({ message }) => {
   const invalid = [];
   const general = message.split(':');
@@ -33,10 +23,18 @@ const inputValidation = ({ message }) => {
   }
 };
 
-const loadingIcon = () => {
+const loadingIcon = params => {
+  const className = params || 'is-disabled button is-loading';
   const buttons = document.querySelectorAll('button');
-  for (const i in buttons) {
-    buttons[i].className = `${buttons[i].className} is-disabled is-info is-loading`;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < buttons.length; i++) {
+    const arr = buttons[i].className.split(' ');
+    if (arr[(arr.length) - 1] === 'is-loading') {
+      arr.pop();
+      buttons[i].className = arr.join(' ');
+    } else {
+      buttons[i].className = `${buttons[i].className} ${className}`;
+    }
   }
 };
 

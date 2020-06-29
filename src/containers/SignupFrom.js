@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import ImageUploader from 'react-images-upload';
 import createUser from '../actions/signup';
 import fetchUser from '../actions/fetchUserDetails';
+import { loadingIcon } from '../helper/index';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class SignupForm extends React.Component {
   componentDidUpdate() {
     const { store, history, fetchUser } = this.props;
     if (store.user.auth_token !== '') {
+      loadingIcon();
       fetchUser(store.user.auth_token);
       history.push('/items');
     }

@@ -4,9 +4,12 @@ import {
   LOGIN_USER,
 } from './index';
 
+import { loadingIcon } from '../helper/index';
+
 function loginUser(data) {
   return dispatch => {
     dispatch(fetchProductsPending('FETCH_USER_PENDING'));
+    loadingIcon();
     fetch('https://intense-savannah-62345.herokuapp.com/auth/login',
       {
         method: 'POST',
@@ -20,6 +23,7 @@ function loginUser(data) {
         if (res.error) {
           throw (res.error);
         }
+        loadingIcon('');
         if (res.auth_token !== undefined) {
           dispatch(LOGIN_USER(res));
         }
