@@ -18,9 +18,10 @@ class LoginForm extends React.Component {
   }
 
   // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
-    const { store, history } = this.props;
+  componentDidUpdate() {
+    const { store, history, fetchUser } = this.props;
     if (store.user.auth_token !== '') {
+      fetchUser(store.user.auth_token);
       history.push('/items');
     }
   }
@@ -39,12 +40,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { store, history, fetchUser } = this.props;
     const { email, password } = this.state;
-    if (store.user.auth_token !== '') {
-      fetchUser(store.user.auth_token);
-      history.push('/items');
-    }
     return (
       <div className="wrap">
         <div className="login-form">

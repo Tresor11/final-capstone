@@ -23,6 +23,14 @@ class SignupForm extends React.Component {
     this.onDrop = this.onDrop.bind(this);
   }
 
+  componentDidUpdate() {
+    const { store, history, fetchUser } = this.props;
+    if (store.user.auth_token !== '') {
+      fetchUser(store.user.auth_token);
+      history.push('/items');
+    }
+  }
+
   onDrop(picture) {
     this.setState({ image: picture[0] });
   }
@@ -46,14 +54,9 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    const { store, history, fetchUser } = this.props;
     const {
       name, email, password, password_confirmation,
     } = this.state;
-    if (store.user.auth_token !== '') {
-      fetchUser(store.user.auth_token);
-      history.push('/items');
-    }
     return (
       <div className="wrap">
         <div className="signup-form">

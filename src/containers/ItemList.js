@@ -40,14 +40,17 @@ const mapStateToProps = store => ({ store });
 
 ItemList.propTypes = {
   store: PropTypes.shape({
-    items: PropTypes.arrayOf({}),
+    items: PropTypes.shape({
+      pending: PropTypes.bool,
+      products: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
         favorites: PropTypes.arrayOf({}),
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.string,
+          image: PropTypes.shape({}),
           name: PropTypes.string,
           email: PropTypes.string,
         }),

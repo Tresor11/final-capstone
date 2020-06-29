@@ -122,7 +122,7 @@ EditProfile.propTypes = {
   store: PropTypes.shape({
     single: PropTypes.shape({
       details: PropTypes.shape({
-        liked: PropTypes.bool,
+        liked: PropTypes.any,
         price: PropTypes.number,
         id: PropTypes.number,
         item: PropTypes.shape({
@@ -134,14 +134,14 @@ EditProfile.propTypes = {
         }),
       }),
     }),
-    items: PropTypes.arrayOf({}),
+    items: PropTypes.shape({}),
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
         favorites: PropTypes.arrayOf({}),
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.string,
+          image: PropTypes.shape({}),
           name: PropTypes.string,
           email: PropTypes.string,
           password: PropTypes.string,

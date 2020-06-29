@@ -40,7 +40,7 @@ const ItemDetails = props => {
           {shouldComponentRender() === true ? (
             <div className="image">
               <img
-                src="https://res-3.cloudinary.com/tresor11/image/upload/v1592940283/h50xxxqprr5fqjau9oi0.png"
+                src={`${single.details.item.image.url}`}
                 alt="item"
               />
               <div className="basic-info">
@@ -141,6 +141,9 @@ ItemDetails.propTypes = {
           contact: PropTypes.string,
           price: PropTypes.number,
           name: PropTypes.string,
+          image: PropTypes.shape({
+            url: PropTypes.string,
+          }),
         }),
       }),
     }),

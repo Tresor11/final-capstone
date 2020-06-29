@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ItemPreview = ({ props }) => {
-  const { name, price, id } = props;
+  const {
+    name, price, id, image,
+  } = props;
   return (
     <div className="preview column shadow">
       <Link to={`/items/${id}`}>
         <img
-          src="https://res-3.cloudinary.com/tresor11/image/upload/v1592940283/h50xxxqprr5fqjau9oi0.png"
+          src={`${image.url}`}
           alt="item"
         />
         <div className="prev-text">
@@ -30,11 +32,22 @@ const ItemPreview = ({ props }) => {
   );
 };
 
+ItemPreview.defaultProps = {
+  name: '',
+  image: {},
+  price: 0,
+  id: 0,
+  props: {},
+};
+
 ItemPreview.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  props: PropTypes.shape({}).isRequired,
+  name: PropTypes.string,
+  image: PropTypes.shape({
+    url: PropTypes.string,
+  }),
+  id: PropTypes.number,
+  price: PropTypes.number,
+  props: PropTypes.shape({}),
 };
 
 export default ItemPreview;

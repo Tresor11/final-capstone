@@ -30,7 +30,7 @@ const Nav = props => {
       <h4 className="current-text">{text}</h4>
       <ul className="nav-links">
         <li onClick={toggle}>
-          <Link to="/">Home</Link>
+          <Link to="/items">Home</Link>
         </li>
         <li onClick={toggle}>
           <Link to={path}>Profile</Link>

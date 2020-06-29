@@ -115,7 +115,6 @@ class ItemForm extends React.Component {
                     className="textarea"
                     name="description"
                     value={description}
-                    isRequired
                     placeholder="Textarea"
                     onChange={this.handleChange}
                   />
@@ -153,14 +152,14 @@ const mapDispatchToProps = {
 
 ItemForm.propTypes = {
   store: PropTypes.shape({
-    items: PropTypes.arrayOf({}),
+    items: PropTypes.shape({}),
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
-        favorites: PropTypes.arrayOf({}),
+        favorites: PropTypes.arrayOf(PropTypes.shape({})),
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.string,
+          image: PropTypes.shape({}),
           name: PropTypes.string,
           email: PropTypes.string,
         }),
