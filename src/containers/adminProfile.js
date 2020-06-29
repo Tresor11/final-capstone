@@ -108,12 +108,15 @@ AdminProfile.propTypes = {
       products: PropTypes.arrayOf(PropTypes.shape({})),
     }),
     user: PropTypes.shape({
+      pending: PropTypes.bool.isRequired,
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
         liked: PropTypes.arrayOf(PropTypes.shape({})),
         income: PropTypes.number,
         details: PropTypes.shape({
-          image: PropTypes.shape({}),
+          image: PropTypes.shape({
+            url: PropTypes.string,
+          }),
           name: PropTypes.string,
           email: PropTypes.string,
         }),

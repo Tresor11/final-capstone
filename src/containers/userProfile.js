@@ -56,6 +56,7 @@ const UserProfile = props => {
           data={[
             ['item', 'numer'],
             ['Wish list', data.favorites.length],
+            // eslint-disable-next-line react/prop-types
             ['Available items', store.items.products.length],
           ]}
           options={{
@@ -100,15 +101,20 @@ const mapStateToProps = store => ({ store });
 
 UserProfile.propTypes = {
   store: PropTypes.shape({
-    items: PropTypes.arrayOf(prototype.shape({})),
+    items: PropTypes.arrayOf(prototype.shape({
+      products: PropTypes.arrayOf(PropTypes.shape({})),
+    })),
     user: PropTypes.shape({
       pending: PropTypes.bool.isRequired,
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
         favorites: PropTypes.arrayOf(shape({})),
+        expense: PropTypes.number.isRequired,
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.shape({}),
+          image: PropTypes.shape({
+            url: PropTypes.string,
+          }),
           name: PropTypes.string,
           email: PropTypes.string,
         }),
