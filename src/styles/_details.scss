@@ -81,11 +81,12 @@
     flex-direction: column;
 
     button {
-      margin: 2px 0;
+      margin: 4px;
       border: none;
-      margin: auto;
+      width: 100%;
       padding: 5px 0;
-      a{
+
+      a {
         color: white;
         font-weight: bolder;
       }
