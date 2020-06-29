@@ -102,6 +102,10 @@ class LoginForm extends React.Component {
   }
 }
 
+LoginForm.defaultProps = {
+  history: {},
+};
+
 LoginForm.propTypes = {
   loginUser: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
@@ -112,7 +116,7 @@ LoginForm.propTypes = {
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }).isRequired,
+  }),
 };
 
 const mapDispatchToProps = {

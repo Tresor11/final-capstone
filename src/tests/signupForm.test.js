@@ -1,18 +1,18 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../reducers/index';
-import App from '../components/App';
+import SignupFrom from '../containers/SignupFrom';
 
 test('renders learn react link', () => {
-  const { getAllByText } = render(
+  render(
     <Router>
       <Provider store={store}>
-        <App />
+        <SignupFrom />
       </Provider>
     </Router>,
   );
-  const linkElement = getAllByText(/LOGIN/i);
-  expect(linkElement.length).toBe(1);
+  expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('password')).toBeInTheDocument();
 });

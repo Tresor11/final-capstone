@@ -162,6 +162,10 @@ class SignupForm extends React.Component {
   }
 }
 
+SignupForm.defaultProps = {
+  history: {},
+};
+
 SignupForm.propTypes = {
   createUser: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
@@ -172,7 +176,7 @@ SignupForm.propTypes = {
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }).isRequired,
+  }),
 };
 
 const mapDispatchToProps = {

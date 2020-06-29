@@ -9,7 +9,9 @@ import { toggle } from '../helper/index';
 import { LOGOUT_USER } from '../actions/index';
 
 const Nav = props => {
-  const { text, store, logout } = props;
+  const {
+    text, store, logout, pathName,
+  } = props;
   const handleClick = () => {
     toggle();
     logout();
@@ -40,7 +42,9 @@ const Nav = props => {
         </li>
       </ul>
       <div className="profile has-text-white has-background-black">
-        <i className="fas fa-arrow-left" />
+        <Link to={pathName}>
+          <i className="fas fa-arrow-left" />
+        </Link>
       </div>
     </nav>
   );
@@ -52,7 +56,12 @@ const mapDispatchToProps = {
 
 const mapStateToProps = store => ({ store });
 
+Nav.defaultProps = {
+  pathName: '/items',
+};
+
 Nav.propTypes = {
+  pathName: PropTypes.string,
   store: PropTypes.shape({
     user: PropTypes.shape({
       auth_token: PropTypes.string,
