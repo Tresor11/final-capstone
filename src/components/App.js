@@ -9,11 +9,13 @@ import UserProfile from '../containers/userProfile';
 import AdminProfile from '../containers/adminProfile';
 import EditProfile from '../containers/EditProfile';
 import EditItem from '../containers/EditItem';
+import Home from './Home';
 
 const App = () => (
   <div>
     <Switch>
-      <Route path="/" component={LoginForm} exact />
+      <Route path="/" component={Home} exact />
+      <Route path="/login" component={LoginForm} />
       <Route path="/signup" component={SignupForm} />
       <Route path="/items" component={ItemList} exact />
       <Route path="/items/:id" component={ItemDetails} exact />
