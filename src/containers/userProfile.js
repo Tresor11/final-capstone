@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Chart } from 'react-google-charts';
 import { Link } from 'react-router-dom';
 import PropTypes, { shape } from 'prop-types';
+import { prototype } from 'enzyme-adapter-react-16';
 import ItemPreview from '../components/ItemPreview';
 import fetchUser from '../actions/fetchUserDetails';
 import Nav from './Nav';
 import Spiner from '../components/Spiner';
-import { prototype } from 'enzyme-adapter-react-16';
 
 const UserProfile = props => {
   const { store, fetchUser } = props;
