@@ -7,6 +7,7 @@ import ItemPreview from '../components/ItemPreview';
 import fetchUser from '../actions/fetchUserDetails';
 import Nav from './Nav';
 import Spiner from '../components/Spiner';
+import { prototype } from 'enzyme-adapter-react-16';
 
 const UserProfile = props => {
   const { store, fetchUser } = props;
@@ -99,7 +100,7 @@ const mapStateToProps = store => ({ store });
 
 UserProfile.propTypes = {
   store: PropTypes.shape({
-    items: PropTypes.arrayOf(shape({})),
+    items: PropTypes.arrayOf(prototype.shape({})),
     user: PropTypes.shape({
       pending: PropTypes.bool.isRequired,
       auth_token: PropTypes.string.isRequired,
@@ -107,7 +108,7 @@ UserProfile.propTypes = {
         favorites: PropTypes.arrayOf(shape({})),
         details: PropTypes.shape({
           admin: PropTypes.bool,
-          image: PropTypes.string,
+          image: PropTypes.shape({}),
           name: PropTypes.string,
           email: PropTypes.string,
         }),
