@@ -29,7 +29,7 @@ const ItemDetails = props => {
   };
 
   const shouldComponentRender = () => {
-    if (store.single.pending === true || single.details.item.name === undefined) return false;
+    if (single.details.item.name === undefined) return false;
     return true;
   };
 
@@ -135,7 +135,7 @@ ItemDetails.propTypes = {
     single: PropTypes.shape({
       pending: PropTypes.bool.isRequired,
       details: PropTypes.shape({
-        liked: PropTypes.any,
+        liked: PropTypes.bool,
         price: PropTypes.number,
         id: PropTypes.number,
         item: PropTypes.shape({

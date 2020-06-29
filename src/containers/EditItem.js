@@ -155,7 +155,7 @@ EditItem.propTypes = {
     }),
     single: PropTypes.shape({
       details: PropTypes.shape({
-        liked: PropTypes.any,
+        liked: PropTypes.bool,
         price: PropTypes.number,
         id: PropTypes.number,
         item: PropTypes.shape({

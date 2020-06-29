@@ -24,7 +24,7 @@ function createItem(data, token, callBack) {
         if (res.error) {
           throw res.error;
         }
-        loadingIcon('');
+        loadingIcon();
         if (res.id === undefined) {
           inputValidation(res);
         } else {

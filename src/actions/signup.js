@@ -7,6 +7,7 @@ import { inputValidation, loadingIcon } from '../helper/index';
 
 function createUser(data) {
   return dispatch => {
+    loadingIcon();
     const event = new FormData();
     for (const name in data) {
       event.append(name, data[name]);
@@ -22,9 +23,9 @@ function createUser(data) {
           throw (res.error);
         }
         if (res.auth_token !== undefined) {
-          loadingIcon();
           dispatch(LOGIN_USER(res));
         } else {
+          loadingIcon();
           inputValidation(res);
         }
         return res;

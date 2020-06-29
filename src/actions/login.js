@@ -23,7 +23,7 @@ function loginUser(data) {
         if (res.error) {
           throw (res.error);
         }
-        loadingIcon('');
+        loadingIcon();
         if (res.auth_token !== undefined) {
           dispatch(LOGIN_USER(res));
         }

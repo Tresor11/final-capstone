@@ -1,7 +1,9 @@
 import { fetchProductsPending, fetchProductsError, AddFavorite } from './index';
+import { loadingIcon } from '../helper/index';
 
 function addFavorite(token, id, method) {
   return dispatch => {
+    loadingIcon();
     dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
     const raw = JSON.stringify({ item_id: `${id}` });
     const requestOptions = {
@@ -18,6 +20,7 @@ function addFavorite(token, id, method) {
         if (res.error) {
           throw res.error;
         }
+        loadingIcon();
         dispatch(AddFavorite());
       })
       .catch(error => {

@@ -1,8 +1,9 @@
 import { fetchProductsPending } from './index';
-import { inputValidation } from '../helper/index';
+import { inputValidation, loadingIcon } from '../helper/index';
 
 function editItem(data, token, id, callBack) {
   return dispatch => {
+    loadingIcon();
     dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
     const event = JSON.stringify(data);
     const requestOptions = {
@@ -22,6 +23,7 @@ function editItem(data, token, id, callBack) {
         if (res.id !== undefined) {
           callBack();
         } else {
+          loadingIcon();
           inputValidation(res);
         }
         return res;

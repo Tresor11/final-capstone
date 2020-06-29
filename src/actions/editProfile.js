@@ -23,7 +23,7 @@ function editProfile(data, token, callBack) {
         if (res.id !== undefined) {
           callBack();
         } else {
-          loadingIcon('button');
+          loadingIcon();
           inputValidation(res);
         }
         return res;

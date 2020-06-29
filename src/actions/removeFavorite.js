@@ -1,7 +1,9 @@
 import { fetchProductsPending, fetchProductsError } from './index';
+import { loadingIcon } from '../helper/index';
 
 function addFavorite(token, id) {
   return dispatch => {
+    loadingIcon();
     dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
     const requestOptions = {
       method: 'DELETE',
@@ -16,6 +18,7 @@ function addFavorite(token, id) {
         if (res.error) {
           throw res.error;
         }
+        loadingIcon();
         return res;
       })
       .catch(error => {

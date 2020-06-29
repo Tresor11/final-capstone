@@ -100,9 +100,9 @@ const mapStateToProps = store => ({ store });
 
 UserProfile.propTypes = {
   store: PropTypes.shape({
-    items: PropTypes.arrayOf(PropTypes.shape({
+    items: PropTypes.shape({
       products: PropTypes.arrayOf(PropTypes.shape({})),
-    })),
+    }),
     user: PropTypes.shape({
       pending: PropTypes.bool.isRequired,
       auth_token: PropTypes.string.isRequired,

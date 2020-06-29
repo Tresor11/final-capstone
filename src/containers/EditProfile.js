@@ -35,7 +35,7 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    const { name, email, password } = this.state;
+    const { name, email } = this.state;
     return (
       <div>
         <Nav text="Edit Profile" />
@@ -84,7 +84,6 @@ class EditProfile extends React.Component {
                   <input
                     className="input"
                     type="password"
-                    value={password}
                     placeholder="password"
                     name="password"
                     onChange={this.handleChange}
@@ -120,21 +119,6 @@ EditProfile.propTypes = {
     push: PropTypes.func,
   }).isRequired,
   store: PropTypes.shape({
-    single: PropTypes.shape({
-      details: PropTypes.shape({
-        liked: PropTypes.any,
-        price: PropTypes.number,
-        id: PropTypes.number,
-        item: PropTypes.shape({
-          id: PropTypes.number,
-          description: PropTypes.string,
-          contact: PropTypes.string,
-          price: PropTypes.number,
-          name: PropTypes.string,
-        }),
-      }),
-    }),
-    items: PropTypes.shape({}),
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({

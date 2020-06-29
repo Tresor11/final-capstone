@@ -47,7 +47,7 @@ ItemList.propTypes = {
     user: PropTypes.shape({
       auth_token: PropTypes.string.isRequired,
       details: PropTypes.shape({
-        favorites: PropTypes.arrayOf({}),
+        favorites: PropTypes.arrayOf(PropTypes.shape({})),
         details: PropTypes.shape({
           admin: PropTypes.bool,
           image: PropTypes.shape({}),
