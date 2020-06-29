@@ -34,6 +34,7 @@ div {
   height: 60vh;
   border-radius: 10px;
   margin: 10px;
+  background-color: rgba(128, 0, 128, 0.473);
   display: flex;
   flex-direction: column;
 
@@ -41,12 +42,19 @@ div {
     color: rgb(83, 83, 83);
   }
 
-  .img {
-    min-height: 70%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  .item-img {
+    background-color: royalblue;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+
+    .responsive {
+      width: 100%;
+      height: auto;
+    }
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
   }
 
   .prev-text {

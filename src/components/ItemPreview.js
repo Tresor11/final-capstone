@@ -9,12 +9,9 @@ const ItemPreview = ({ props }) => {
   return (
     <div className="preview column shadow">
       <Link to={`/items/${id}`}>
-        <div
-          className="img"
-          style={{
-            backgroundImage: `url(${image.url})`,
-          }}
-        />
+        <div className="item-img">
+          <img className="responsive" src={`${image.url}`} alt="preview" />
+        </div>
         <div className="prev-text">
           <div>
             <p>{name}</p>
