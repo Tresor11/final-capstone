@@ -5,15 +5,6 @@ import { Provider } from 'react-redux';
 import store from '../reducers/index';
 import LoginForm from '../containers/LoginForm';
 
-const props = {
-  name: 'testing',
-  id: 0,
-  price: 10,
-  image: {
-    url: 'testi.jpg',
-  },
-};
-
 test('renders learn react link', () => {
   render(
     <Router>

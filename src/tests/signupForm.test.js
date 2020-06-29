@@ -14,5 +14,8 @@ test('renders learn react link', () => {
     </Router>,
   );
   expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
   expect(screen.getByPlaceholderText('password')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('password confirmation')).toBeInTheDocument();
+  expect(screen.getByText(/profile/i)).toBeInTheDocument();
 });
