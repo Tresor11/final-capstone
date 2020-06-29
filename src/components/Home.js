@@ -8,8 +8,8 @@ const Home = () => (
     <p>
       A platform where you can sell
       <br />
-      or by someone `&apos;` s partially used items
-      for friendly price
+      or by someone&apos;s partially used items
+      for a friendly price
     </p>
     <div className="btn-cont">
       <button type="button" className="button is-black is-outlined is-rounded"><Link to="/login">LOGIN</Link></button>

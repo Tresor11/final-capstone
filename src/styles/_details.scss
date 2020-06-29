@@ -17,7 +17,7 @@
 .item-details {
   margin-top: 10%;
   position: relative;
-  min-height: 70vh;
+  min-height: 60vh;
   width: 95%;
   background-color: rgb(255, 255, 255);
   padding: 2%;
@@ -51,11 +51,11 @@
 
       h4 {
         font-weight: bold;
-        padding: 5px;
+        padding: 2%;
       }
 
       p {
-        padding: 5px;
+        padding: 2%;
         font-family:
           "Segoe UI",
           "Roboto",
@@ -72,11 +72,8 @@
 
   .button,
   .admin-action {
-    position: absolute;
-    bottom: 2%;
     width: 95%;
-    color: white;
-    font-weight: bolder;
+    margin: auto;
   }
 
   .admin-action {
@@ -87,6 +84,10 @@
       margin: 2px 0;
       border: none;
       padding: 5px 0;
+      a{
+        color: white;
+        font-weight: bolder;
+      }
     }
   }
 

@@ -14,7 +14,7 @@ div {
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
-  height: 70%;
+  height: 70vh;
 }
 
 .wrap-list {
@@ -35,7 +35,6 @@ div {
   border-radius: 10px;
   margin: 10px;
   display: flex;
-  background-color: white;
   flex-direction: column;
 
   a {
@@ -50,7 +49,6 @@ div {
   .prev-text {
     width: 100%;
     padding: 2% 5%;
-    margin-top: -10px;
     height: 30%;
     display: flex;
     flex-direction: column;
@@ -58,7 +56,7 @@ div {
     div {
       display: flex;
       font-weight: bolder;
-      margin: 5px;
+      margin: 2%;
       justify-content: space-between;
     }
 
