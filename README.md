@@ -1,4 +1,5 @@
-# Resell-app ![screenshot](./lamb.png)
+
+# Resell-app
 
 ### This project is a single page application built with react,redux and rails
 
@@ -6,27 +7,50 @@
 
 <hr />
 
-> The home page is a list of the available items from which you can select a specific on to the it details an add it to your wish list.
+> The home page is a list of the available items from which a user can select a specific on to the it details and add it to your wish list.
 
 ![screenshot](./home.png)
 
 <hr />
 
-> The Details page contains details of a specific item such as contacts, description,price,and full picture and the botton there is a button to add it to your wish list.
+> When vited by a normal user The Details page contains details of a specific item such as contacts, description,price,and full picture and the botton there is a button to add it to your wish list.
 
 ![screenshot](./details.png)
 
 <hr />
 
+> When vited by an admin The Details page contains Show two additional buttons allowing the admin to edit or delete an item.
+
+![screenshot](./details-a.png)
+
+<hr />
+
+
+> The profile page contains all the details fo the user including:
+
+> - the items on their wish list
+> - their estimated expenses
+
+> the user can also edit their profile informations
+
 ![screenshot](./profile.png)
 
-> The profile page contains all the details fo the user such as their wish list, their name and email.it also has a button allowing the user to update their informations
+
+<hr />
+
+> The admin profile page has an addtional sections allowin the admin to:
+> - create an new item
+> - see the estimated revenue
+> - see all the liked items
+
+
+![screenshot](./profile-a.png)
 
 <hr />
 
 > The remaining two pages are basically the welcome page and the different forms
 
-![screenshot](./details.png)
+![screenshot](./form.png)
 
 
 ## Built With
