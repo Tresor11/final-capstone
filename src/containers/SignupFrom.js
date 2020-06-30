@@ -143,7 +143,7 @@ class SignupForm extends React.Component {
               onChange={this.onDrop}
               required
               imgExtension={['.jpg', '.gif', '.png', '.gif']}
-              maxFileSize={5242880}
+              maxFileSize={1048576}
             />
 
             <div className="field">

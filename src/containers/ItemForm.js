@@ -126,9 +126,8 @@ class ItemForm extends React.Component {
                 buttonText="Item Image"
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
+                maxFileSize={1048576}
               />
-
               <div className="field">
                 <p className="control">
                   <button className="button is-success" type="submit">
