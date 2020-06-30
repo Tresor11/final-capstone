@@ -1,68 +1,105 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Resell-app ![screenshot](./lamb.png)
 
-## Available Scripts
+### This project is a single page application built with react,redux and rails
 
-In the project directory, you can run:
+#### The application resell-app where users can sell or the buy partally used items for an affordable price
 
-### `yarn start`
+<hr />
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> The home page is a list of the available items from which you can select a specific on to the it details an add it to your wish list.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![screenshot](./home.png)
 
-### `yarn test`
+<hr />
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> The Details page contains details of a specific item such as contacts, description,price,and full picture and the botton there is a button to add it to your wish list.
 
-### `yarn build`
+![screenshot](./details.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<hr />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![screenshot](./profile.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> The profile page contains all the details fo the user such as their wish list, their name and email.it also has a button allowing the user to update their informations
 
-### `yarn eject`
+<hr />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> The remaining two pages are basically the welcome page and the different forms
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![screenshot](./details.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Built With
 
-## Learn More
+- javaScript
+- React
+- Rails
+- Sass
+- Bulma
+- Redux
+- Node js
+- Heroku
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Live Demo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Live Demo Link](https://resell-app.netlify.app/)
 
-### Code Splitting
+## Getting Started
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Here are the steps to follow in order to get this project on your local computer.
 
-### Analyzing the Bundle Size
+### Prerequisites
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+`node v12.16.3 +`
 
-### Making a Progressive Web App
+`npm v6.14.4 +`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Setup
 
-### Advanced Configuration
+clone this repo by typing `git clone`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Install
+
+install the dependacies by typing `npm install`
+
+### Usage
+
+start the local server by running `npm start`
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+this project is deployed on netlify
 
-### `yarn build` fails to minify
+to get the deployment build of the code run `npm run build`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Testing
+
+this project uses jest from testing , to run the tests type `npm test` 
+
+## Authors
+
+👤 **Tresor bireke**
+
+- Github: [@Tresor11](https://github.com/Tresor11)
+- Twitter: [@Tbireke](https://twitter.com/Tbireke)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
+

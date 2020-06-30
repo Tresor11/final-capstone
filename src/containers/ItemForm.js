@@ -115,7 +115,7 @@ class ItemForm extends React.Component {
                     className="textarea"
                     name="description"
                     value={description}
-                    placeholder="Textarea"
+                    placeholder="Description"
                     onChange={this.handleChange}
                   />
                 </div>
@@ -150,6 +150,10 @@ const mapDispatchToProps = {
   createItem,
 };
 
+ItemForm.defaultProps = {
+  history: {},
+};
+
 ItemForm.propTypes = {
   store: PropTypes.shape({
     items: PropTypes.shape({}),
@@ -169,7 +173,7 @@ ItemForm.propTypes = {
   createItem: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }).isRequired,
+  }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemForm);
