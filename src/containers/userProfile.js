@@ -80,9 +80,9 @@ const UserProfile = props => {
       </div>
 
       <h4 className="is-title is-size-4 has-text-centered mt-4 mb-4">
-        My favotites
+        My Wish-list
         {' '}
-        <i className="fas fa-heart has-text-danger" aria-hidden="true" />
+        <i className="fa fa-shopping-basket has-text-warning" aria-hidden="true" />
         {' '}
       </h4>
       {data.favorites.map(el => (

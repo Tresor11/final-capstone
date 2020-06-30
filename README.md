@@ -9,19 +9,25 @@
 
 > The home page is a list of the available items from which a user can select a specific on to the it details and add it to your wish list.
 
-![screenshot](./home.png)
+<p align="center"> 
+<img src="./images/home.png">
+</p>
 
 <hr />
 
 > When vited by a normal user The Details page contains details of a specific item such as contacts, description,price,and full picture and the botton there is a button to add it to your wish list.
 
-![screenshot](./details.png)
+<p align="center"> 
+<img src="./images/details.png">
+</p>
 
 <hr />
 
 > When vited by an admin The Details page contains Show two additional buttons allowing the admin to edit or delete an item.
 
-![screenshot](./details-a.png)
+<p align="center"> 
+<img src="./images/details-a.png">
+</p>
 
 <hr />
 
@@ -33,7 +39,9 @@
 
 > the user can also edit their profile informations
 
-![screenshot](./profile.png)
+<p align="center"> 
+<img src="./images/profile.png">
+</p>
 
 
 <hr />
@@ -44,13 +52,17 @@
 > - see all the liked items
 
 
-![screenshot](./profile-a.png)
+<p align="center"> 
+<img src="./images/profile-a.png">
+</p>
 
 <hr />
 
-> The remaining two pages are basically the welcome page and the different forms
+> The remaining pages are basically the welcome page and the different forms
 
-![screenshot](./form.png)
+<p align="center"> 
+<img src="./images/form.png">
+</p>
 
 
 ## Built With
