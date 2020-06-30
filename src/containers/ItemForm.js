@@ -126,7 +126,7 @@ class ItemForm extends React.Component {
                 buttonText="Item Image"
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={1048576}
+                maxFileSize={500000}
               />
               <div className="field">
                 <p className="control">
