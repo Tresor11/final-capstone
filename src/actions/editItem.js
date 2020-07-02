@@ -1,10 +1,11 @@
-import { fetchProductsPending } from './index';
+import { fetchProductsPending, BASE_URL } from './index';
 import { inputValidation, loadingIcon } from '../helper/index';
+import { FETCH_SINGLE_PENDING } from './action-type';
 
 function editItem(data, token, id, callBack) {
   return dispatch => {
     loadingIcon();
-    dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
+    dispatch(fetchProductsPending(FETCH_SINGLE_PENDING));
     const event = JSON.stringify(data);
     const requestOptions = {
       method: 'PUT',
@@ -14,7 +15,7 @@ function editItem(data, token, id, callBack) {
       },
       body: event,
     };
-    fetch(`https://intense-savannah-62345.herokuapp.com/items/${id}`, requestOptions)
+    fetch(`${BASE_URL}/items/${id}`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {

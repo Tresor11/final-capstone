@@ -46,6 +46,9 @@ nav {
       height: 40px;
       border-radius: 100px;
       transform: translate(-5%, -50%);
+      a{
+        color: white;
+      }
     }
 
     .current-text {
@@ -71,7 +74,7 @@ nav {
     cursor: pointer;
     right: 5%;
     top: 50%;
-    background-color: rgb(131, 129, 129);
+    background-color: rgb(0, 0, 0);
     border-radius: 100%;
     padding: 5px 0;
     transform: translate(-5%, -50%);
@@ -96,7 +99,7 @@ nav {
   }
 
   .nav-links.open {
-    background-color: rgb(131, 129, 129);
+    background-color: rgb(66, 66, 66);
     clip-path: circle(900px at 90% 0%);
     -webkit-clip-path: circle(900px at 90% 0%);
   }

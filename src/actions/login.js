@@ -2,15 +2,18 @@ import {
   fetchProductsError,
   fetchProductsPending,
   LOGIN_USER,
+  BASE_URL,
 } from './index';
 
 import { loadingIcon } from '../helper/index';
 
+import { LOGIN_USER_PENDING } from './action-type';
+
 function loginUser(data) {
   return dispatch => {
-    dispatch(fetchProductsPending('FETCH_USER_PENDING'));
+    dispatch(fetchProductsPending(LOGIN_USER_PENDING));
     loadingIcon();
-    fetch('https://intense-savannah-62345.herokuapp.com/auth/login',
+    fetch(`${BASE_URL}/auth/login`,
       {
         method: 'POST',
         headers: {

@@ -1,9 +1,13 @@
-import { fetchProductsPending, fetchProductsError, FetchUserDetails } from './index';
+import {
+  fetchProductsPending, fetchProductsError, FetchUserDetails, BASE_URL,
+} from './index';
+
+import { LOGIN_USER_PENDING } from './action-type';
 
 function fetchUser(token) {
   return dispatch => {
-    dispatch(fetchProductsPending('FETCH_USER_PENDING'));
-    fetch('https://intense-savannah-62345.herokuapp.com/profile', {
+    dispatch(fetchProductsPending(LOGIN_USER_PENDING));
+    fetch(`${BASE_URL}/profile`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

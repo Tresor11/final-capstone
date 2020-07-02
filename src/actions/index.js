@@ -1,4 +1,15 @@
 /* eslint-disable camelcase */
+import {
+  FETCH_PRODUCTS_ERROR,
+  FETCH_SINGLE_SUCCESS,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_USER_DETAILS,
+  REMOVE_FAV,
+  LOGIN,
+  LOGOUT,
+  ADD_FAVORITE,
+} from './action-type';
+
 const fetchProductsPending = type => ({
   type,
 });
@@ -21,41 +32,43 @@ const getToken = () => {
   return JSON.parse(res);
 };
 
-const removeFav = id => ({
-  type: 'REMOVE_FAV',
-  id,
+const removeFav = playload => ({
+  type: REMOVE_FAV,
+  playload,
 });
 
-const fetchProductsSuccess = products => ({
-  type: 'FETCH_PRODUCTS_SUCCESS',
-  products,
+const fetchProductsSuccess = playload => ({
+  type: FETCH_PRODUCTS_SUCCESS,
+  playload,
 });
 
-const fetchProductsError = error => ({
-  type: 'FETCH_PRODUCTS_ERROR',
-  error,
+const fetchProductsError = playload => ({
+  type: FETCH_PRODUCTS_ERROR,
+  playload,
 });
 
-const fetchSingleItem = details => ({
-  type: 'FETCH_SINGLE_SUCCESS',
-  details,
+const fetchSingleItem = playload => ({
+  type: FETCH_SINGLE_SUCCESS,
+  playload,
 });
 
-const LOGIN_USER = ({ auth_token }) => ({
-  type: 'LOGIN',
-  auth_token,
+const LOGIN_USER = playload => ({
+  type: LOGIN,
+  playload,
 });
 
 const LOGOUT_USER = () => ({
-  type: 'LOGOUT',
+  type: LOGOUT,
 });
 
-const FetchUserDetails = details => ({
-  type: 'FETCH_USER_DETAILS',
-  details,
+const FetchUserDetails = playload => ({
+  type: FETCH_USER_DETAILS,
+  playload,
 });
 
-const AddFavorite = () => ({ type: 'ADD_FAVORITE' });
+const AddFavorite = () => ({ type: ADD_FAVORITE });
+
+const BASE_URL = 'https://intense-savannah-62345.herokuapp.com';
 
 export {
   fetchProductsError,
@@ -71,4 +84,5 @@ export {
   AddFavorite,
   getToken,
   LOGOUT_USER,
+  BASE_URL,
 };

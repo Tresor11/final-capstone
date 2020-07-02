@@ -1,10 +1,14 @@
-import { fetchProductsPending, fetchProductsError, AddFavorite } from './index';
+import {
+  fetchProductsPending, fetchProductsError, AddFavorite, BASE_URL,
+} from './index';
+
+import { FETCH_SINGLE_PENDING } from './action-type';
 import { loadingIcon } from '../helper/index';
 
 function addFavorite(token, id, method) {
   return dispatch => {
     loadingIcon();
-    dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
+    dispatch(fetchProductsPending(FETCH_SINGLE_PENDING));
     const raw = JSON.stringify({ item_id: `${id}` });
     const requestOptions = {
       method,
@@ -14,7 +18,7 @@ function addFavorite(token, id, method) {
       },
       body: raw,
     };
-    fetch('https://intense-savannah-62345.herokuapp.com/favorites', requestOptions)
+    fetch(`${BASE_URL}/favorites`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {

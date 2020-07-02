@@ -1,10 +1,11 @@
-import { fetchProductsPending, fetchProductsError } from './index';
+import { fetchProductsPending, fetchProductsError, BASE_URL } from './index';
 import { loadingIcon } from '../helper/index';
+import { FETCH_PRODUCTS_PENDING } from './action-type';
 
 function addFavorite(token, id) {
   return dispatch => {
     loadingIcon();
-    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
+    dispatch(fetchProductsPending(FETCH_PRODUCTS_PENDING));
     const requestOptions = {
       method: 'DELETE',
       headers: {
@@ -12,7 +13,7 @@ function addFavorite(token, id) {
         Authorization: `Bearer ${token}`,
       },
     };
-    fetch(`https://intense-savannah-62345.herokuapp.com/favorites/${id}`, requestOptions)
+    fetch(`${BASE_URL}/favorites/${id}`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {

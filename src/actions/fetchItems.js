@@ -1,9 +1,13 @@
-import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from './index';
+import {
+  fetchProductsPending, fetchProductsSuccess, fetchProductsError, BASE_URL,
+} from './index';
+
+import { FETCH_PRODUCTS_PENDING } from './action-type';
 
 function fetchItems(token) {
   return dispatch => {
-    dispatch(fetchProductsPending('FETCH_PRODUCTS_PENDING'));
-    fetch('https://intense-savannah-62345.herokuapp.com/items', {
+    dispatch(fetchProductsPending(FETCH_PRODUCTS_PENDING));
+    fetch(`${BASE_URL}/items`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

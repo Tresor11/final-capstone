@@ -1,8 +1,11 @@
-import { fetchProductsPending, fetchSingleItem, fetchProductsError } from './index';
+import {
+  fetchProductsPending, fetchSingleItem, fetchProductsError, BASE_URL,
+} from './index';
+import { FETCH_SINGLE_PENDING } from './action-type';
 
 function fetchSingle(token, id, method) {
   return dispatch => {
-    dispatch(fetchProductsPending('FETCH_SINGLE_PENDING'));
+    dispatch(fetchProductsPending(FETCH_SINGLE_PENDING));
     const requestOptions = {
       method,
       headers: {
@@ -11,7 +14,7 @@ function fetchSingle(token, id, method) {
       },
     };
 
-    fetch(`https://intense-savannah-62345.herokuapp.com/items/${id}`, requestOptions)
+    fetch(`${BASE_URL}/items/${id}`, requestOptions)
       .then(res => res.json())
       .then(res => {
         if (res.error) {

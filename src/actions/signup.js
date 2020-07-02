@@ -2,6 +2,7 @@
 /* eslint-disable guard-for-in */
 import {
   LOGIN_USER,
+  BASE_URL,
 } from './index';
 import { inputValidation, loadingIcon } from '../helper/index';
 
@@ -12,7 +13,7 @@ function createUser(data) {
     for (const name in data) {
       event.append(name, data[name]);
     }
-    fetch('https://intense-savannah-62345.herokuapp.com/users',
+    fetch(`${BASE_URL}/users`,
       {
         method: 'POST',
         body: event,
