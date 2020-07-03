@@ -28,7 +28,11 @@ nav {
 
   li a {
     text-decoration: none;
-    color: white;
+    color: black;
+    font-weight: bold;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
   }
 }
 
@@ -75,7 +79,7 @@ nav {
     cursor: pointer;
     right: 5%;
     top: 50%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(31, 31, 31);
     border-radius: 100%;
     padding: 5px 0;
     transform: translate(-5%, -50%);
@@ -95,7 +99,10 @@ nav {
     li {
       padding: 20% 0;
       font-weight: bolder;
-      color: white;
+    }
+
+    li a {
+      color: rgb(231, 231, 231);
     }
   }
 

@@ -95,9 +95,11 @@ const AdminProfile = props => {
         <i className="fas fa-heart has-text-danger" aria-hidden="true" />
         {' '}
       </h4>
-      {data.liked.map(el => (
-        <ItemPreview key={el.id} props={el} />
-      ))}
+      <div className="liked">
+        {data.liked.map(el => (
+          <ItemPreview key={el.id} props={el} />
+        ))}
+      </div>
     </div>
   );
 };

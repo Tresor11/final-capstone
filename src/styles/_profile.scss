@@ -37,3 +37,20 @@
   padding: 5px;
   border-radius: 20px;
 }
+
+@media screen and (min-width: 768px) {
+  .credential {
+    width: 60%;
+  }
+
+  .chart {
+    width: 60%;
+    display: flex;
+  }
+
+  .liked,
+  .wish {
+    width: 60%;
+    margin: auto;
+  }
+}

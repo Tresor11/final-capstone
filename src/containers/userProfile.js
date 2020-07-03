@@ -85,9 +85,11 @@ const UserProfile = props => {
         <i className="fa fa-shopping-basket has-text-warning" aria-hidden="true" />
         {' '}
       </h4>
-      {data.favorites.map(el => (
-        <ItemPreview props={el} key={el.id} />
-      ))}
+      <div className="wish">
+        {data.favorites.map(el => (
+          <ItemPreview props={el} key={el.id} />
+        ))}
+      </div>
     </div>
   );
 };
