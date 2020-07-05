@@ -1,0 +1,56 @@
+.credential {
+  width: 95%;
+  background-color: rgb(197, 197, 197);
+  margin: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  img {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+  }
+
+  div {
+    margin: 5px;
+    min-width: 30%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+.shadow {
+  -webkit-box-shadow: 0 0 12px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 12px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 12px -1px rgba(0, 0, 0, 0.75);
+}
+
+.chart {
+  margin: 20px auto;
+  width: 100%;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .credential {
+    width: 60%;
+  }
+
+  .chart {
+    width: 60%;
+    display: flex;
+  }
+
+  .liked,
+  .wish {
+    width: 60%;
+    margin: auto;
+  }
+}

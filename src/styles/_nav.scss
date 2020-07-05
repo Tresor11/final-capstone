@@ -1,0 +1,114 @@
+body {
+  background-color: rgb(236, 236, 236);
+  min-height: 100vh;
+  position: relative;
+}
+
+nav {
+  height: 10vh;
+  z-index: 2;
+  position: relative;
+
+  .profile {
+    display: none;
+  }
+
+  .current-text {
+    display: none;
+  }
+}
+
+.nav-links {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+
+  li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    .profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      cursor: pointer;
+      left: 5%;
+      top: 50%;
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+      transform: translate(-5%, -50%);
+
+      a {
+        color: white;
+      }
+    }
+
+    .current-text {
+      display: flex;
+      position: absolute;
+      font-size: 25px;
+      left: 35%;
+      color: black;
+      font-weight: bolder;
+      top: 25%;
+    }
+  }
+
+  .line {
+    height: 3px;
+    width: 30px;
+    margin: 5px;
+    background: white;
+  }
+
+  .hamburger {
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    background-color: rgb(31, 31, 31);
+    border-radius: 100%;
+    padding: 5px 0;
+    transform: translate(-5%, -50%);
+    z-index: 2;
+  }
+
+  .nav-links {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    clip-path: circle(25px at 89% 5%);
+    -webkit-clip-path: circle(25px at 89% 5%);
+    transition: all 0.5s ease-in-out;
+
+    li {
+      padding: 20% 0;
+      font-weight: bolder;
+    }
+
+    li a {
+      color: rgb(231, 231, 231);
+    }
+  }
+
+  .nav-links.open {
+    background-color: rgb(66, 66, 66);
+    clip-path: circle(900px at 90% 0%);
+    -webkit-clip-path: circle(900px at 90% 0%);
+  }
+}

@@ -1,68 +1,141 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Resell-app
 
-In the project directory, you can run:
+### This project is a single page application built with react,redux and rails
 
-### `yarn start`
+#### The application resell-app where users can sell or the buy partally used items for an affordable price
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<hr />
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+> The home page is a list of the available items from which a user can select a specific on to the it details and add it to your wish list.
 
-### `yarn test`
+<p align="center"> 
+<img src="./images/home.png">
+</p>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<hr />
 
-### `yarn build`
+> When vited by a normal user The Details page contains details of a specific item such as contacts, description,price,and full picture and the botton there is a button to add it to your wish list.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center"> 
+<img src="./images/details.png">
+</p>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<hr />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> When vited by an admin The Details page contains Show two additional buttons allowing the admin to edit or delete an item.
 
-### `yarn eject`
+<p align="center"> 
+<img src="./images/details-a.png">
+</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<hr />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> The profile page contains all the details fo the user including:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> - the items on their wish list
+> - their estimated expenses
 
-## Learn More
+> the user can also edit their profile informations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center"> 
+<img src="./images/profile.png">
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<hr />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+> The admin profile page has an addtional sections allowin the admin to:
+> - create an new item
+> - see the estimated revenue
+> - see all the liked items
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+<p align="center"> 
+<img src="./images/profile-a.png">
+</p>
 
-### Making a Progressive Web App
+<hr />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+> The remaining pages are basically the welcome page and the different forms
 
-### Advanced Configuration
+<p align="center"> 
+<img src="./images/form.png">
+</p>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+## Built With
+
+- javaScript
+- React
+- Rails
+- Sass
+- Bulma
+- Redux
+- Node js
+- Heroku
+
+## Live Demo
+
+[Live Demo Link](https://resell-app.netlify.app/)
+
+## Getting Started
+
+Here are the steps to follow in order to get this project on your local computer.
+
+### Prerequisites
+
+`node v12.16.3 +`
+
+`npm v6.14.4 +`
+
+### Setup
+
+clone this repo by typing `git clone`
+
+### Install
+
+install the dependacies by typing `npm install`
+
+### Usage
+
+start the local server by running `npm start`
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+this project is deployed on netlify
 
-### `yarn build` fails to minify
+to get the deployment build of the code run `npm run build`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Testing
+
+this project uses jest from testing , to run the tests type `npm test` 
+
+## Authors
+
+👤 **Tresor bireke**
+
+- Github: [@Tresor11](https://github.com/Tresor11)
+- Twitter: [@Tbireke](https://twitter.com/Tbireke)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
+
