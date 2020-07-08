@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -5,6 +7,7 @@ import fetchItems from '../actions/fetchItems';
 import ItemPreview from '../components/ItemPreview';
 import Nav from './Nav';
 import Spiner from '../components/Spiner';
+import { scroll } from '../helper/index';
 
 const ItemList = props => {
   const { fetchItems, store } = props;
@@ -24,6 +27,8 @@ const ItemList = props => {
       <div className="wrap-list">
         {shouldComponentRender() === true ? (
           <div className="item-list">
+            <span className="arrow-left" onClick={() => scroll('right')}>{'<'}</span>
+            <span className="arrow-right" onClick={() => scroll('left')}>{'>'}</span>
             {store.items.products.map(el => <ItemPreview key={el.id} props={el} />)}
           </div>
         ) : <Spiner /> }

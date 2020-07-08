@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div className="wrap">
+      <div className="wrap login-wrap">
         <div className="login-form">
           <h4 className="form-control new-book-text is-size-4">LOGIN</h4>
           <form className="form-control" onSubmit={this.handleSubmit}>
@@ -86,14 +86,14 @@ class LoginForm extends React.Component {
 
             <div className="field">
               <p className="control">
-                <button className="button is-success" type="submit">
+                <button className="button login-btn" type="submit">
                   Login
                 </button>
               </p>
             </div>
           </form>
           <h4>or</h4>
-          <Link to="/signup" className="button is-outlined has-text-primary">
+          <Link to="/signup" className="button is-outlined">
             Signup
           </Link>
         </div>

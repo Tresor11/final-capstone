@@ -25,6 +25,9 @@ const App = () => (
       <Route path="/edit-profile" component={EditProfile} />
       <Route path="/items/:id/edit" component={EditItem} />
     </Switch>
+    <div className="foter">
+      <p>Created by Tresor B</p>
+    </div>
   </div>
 );
 

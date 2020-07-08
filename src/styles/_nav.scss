@@ -30,10 +30,28 @@ nav {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    border: 1px solid gray;
+    border-bottom: 4px solid;
     padding: 5px;
-    border-radius: 10px;
   }
+
+  li:hover,li:focus{
+    a::before{
+      content: ".";
+      border-top: 4px solid black;
+      font-size: 20px;
+    }
+  }
+}
+
+.foter{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.39);
+  height: 5vh;
+  width: 100vw;
 }
 
 @media screen and (max-width: 768px) {

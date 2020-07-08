@@ -38,4 +38,15 @@ const loadingIcon = params => {
   }
 };
 
-export { toggle, inputValidation, loadingIcon };
+function scroll(direction) {
+  const list = document.querySelector('div.item-list');
+  if (direction === 'left') {
+    list.scrollLeft += 150;
+  } else {
+    list.scrollLeft -= 150;
+  }
+}
+
+export {
+  toggle, inputValidation, loadingIcon, scroll,
+};

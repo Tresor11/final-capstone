@@ -11,10 +11,40 @@ div {
 
 .item-list {
   display: flex;
+  position: relative;
+  scroll-behavior: smooth;
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
   height: 70vh;
+
+  .arrow-left,.arrow-right{
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.822);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    transition: all 0.5s ease-in-out;
+    &:hover{
+      font-weight: bolder;
+      transform: scale(1.1);
+    }
+  }
+  .arrow-left{
+    position: fixed;
+    left: 3%;
+  }
+  .arrow-right{
+    position: fixed;
+    right: 3%;
+  }
 }
 
 .wrap-list {

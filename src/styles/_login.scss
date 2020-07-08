@@ -4,15 +4,57 @@
   align-items: center;
 }
 
-.login-form {
-  width: 80%;
-  height: 80%;
-  background-color: white;
+.login-wrap,.signup-wrap {
+  background-image: linear-gradient( 109.6deg,  rgba(128,144,233,1) 17.4%, rgba(171,88,238,1) 52.4%, rgba(255,129,246,1) 91% );
+}
+
+.login-form,.signup-form  {
+  width: 70%;
+  border-radius: 10px;
   text-align: center;
-  margin: 10% 0;
+  height: 80%;
+  background-color: rgb(255, 255, 255);
+  margin: 20% 0;
   padding: 10%;
+  .label{
+    font-weight: lighter;
+    text-align: left;
+    color: gray;
+    font-size: small;
+  }
+
+  .button{
+    width: 100%;
+    border-radius: 100px;
+  }
+
+  .login-btn,.signup-btn{
+    margin: 20px auto;
+    color: white;
+    font-weight: bolder;
+    background-image: linear-gradient( 109.6deg,  rgba(128,144,233,1) 17.4%, rgba(171,88,238,1) 52.4%, rgba(255,129,246,1) 91% );
+  }
+
+  input{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border:none;
+    border-bottom: 0.5px solid black;
+  }
+  input::placeholder{
+    font-size: small;
+  }
 
   h4 {
     padding: 5% 0%;
+    font-weight: bolder;
+  }
+}
+
+@media screen and(min-width:768px){
+  .login-form{
+    width: 40%;
+    padding: 5%;
+    margin: 5% 0 ;
   }
 }
