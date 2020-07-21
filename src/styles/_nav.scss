@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(236, 236, 236);
+  background-color:whitesmoke;
   min-height: 100vh;
   position: relative;
 }
@@ -28,17 +28,20 @@ nav {
 
   li a {
     text-decoration: none;
-    color: black;
-    font-weight: bold;
-    border-bottom: 4px solid;
+    color:rgba(128,144,233,1);
+    font-weight: bolder;
     padding: 5px;
-  }
+    &::after{
+      content: "";
+      display: block;
+      width: 50%;
+      margin: auto;
+      transition: width 0.5s;
+      border-bottom: 4px solid;
+    }
 
-  li:hover,li:focus{
-    a::before{
-      content: ".";
-      border-top: 4px solid black;
-      font-size: 20px;
+    &:hover::after{
+      width: 100%;
     }
   }
 }
