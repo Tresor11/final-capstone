@@ -7,6 +7,16 @@
 
 <hr />
 
+## RoR API Endpoint
+
+https://github.com/Tresor11/final-capstone-api
+
+## Screenshots and Walkthrough
+
+https://www.loom.com/share/9b3e28f9973d4148bc7359015e93704e
+
+
+
 > The home page is a list of the available items from which a user can select a specific on to the it details and add it to your wish list.
 
 <p align="center"> 
