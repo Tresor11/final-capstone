@@ -3,7 +3,7 @@
 
 ### This project is a single page application built with React,Redux and Rails
 
-#### The application resell-app where users can sell or the buy partally used items for an affordable price
+#### The application resell-app where users can sell or buy partally used items for an affordable price.
 
 <hr />
 
