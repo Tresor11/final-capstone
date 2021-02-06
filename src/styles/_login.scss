@@ -1,16 +1,18 @@
 .wrap {
   display: flex;
   justify-content: center;
+  height: 100%;
+  width: 100%;
   align-items: center;
 }
 
 .login-form {
-  width: 80%;
-  height: 80%;
+  width: auto;
+  height: auto;
   background-color: white;
   text-align: center;
-  margin: 10% 0;
-  padding: 10%;
+  margin: 2% 0;
+  padding: 5%;
 
   h4 {
     padding: 5% 0%;
