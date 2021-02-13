@@ -61,7 +61,7 @@ class SignupForm extends React.Component {
     } = this.state;
     return (
       <div className="wrap">
-        <div className="signup-form">
+        <div className="reg-form">
           <h4 className="form-control new-book-text">CREATE ACCOUNT</h4>
           <form className="form-control" onSubmit={this.handleSubmit}>
 
@@ -155,7 +155,7 @@ class SignupForm extends React.Component {
             </div>
           </form>
           <h4>-Have an account?-</h4>
-          <Link to="/" className="button has-text-info">Login</Link>
+          <Link to="/login" className="button has-text-info">Login</Link>
         </div>
       </div>
     );

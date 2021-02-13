@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
     const { email, password } = this.state;
     return (
       <div className="wrap">
-        <div className="login-form">
+        <div className="reg-form">
           <h4 className="form-control new-book-text is-size-4">LOGIN</h4>
           <form className="form-control" onSubmit={this.handleSubmit}>
             <div className="field">
