@@ -12,8 +12,8 @@ const Home = () => (
       for a friendly price
     </p>
     <div className="btn-cont">
-      <button type="button" className="bg-red-700 p-10"><Link to="/login">LOGIN</Link></button>
-      <button type="button" className="button is-black is-outlined is-rounded"><Link to="/signup">SIGNUP</Link></button>
+      <button type="button" className="bg-red-700 p-10"><Link to="/login">Login</Link></button>
+      <button type="button" className="button is-black is-outlined is-rounded"><Link to="/signup">SignUp</Link></button>
     </div>
   </div>
 );
