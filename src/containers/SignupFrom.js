@@ -33,10 +33,6 @@ class SignupForm extends React.Component {
     }
   }
 
-  onDrop(picture) {
-    this.setState({ image: picture[0] });
-  }
-
   handleSubmit(ev) {
     const { createUser } = this.props;
     ev.preventDefault();
@@ -53,6 +49,10 @@ class SignupForm extends React.Component {
     const newSate = el.target.value;
     const prevState = this.state;
     this.setState({ ...prevState, [el.target.name]: newSate });
+  }
+
+  onDrop(picture) {
+    this.setState({ image: picture[0] });
   }
 
   render() {
