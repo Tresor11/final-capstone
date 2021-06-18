@@ -17,12 +17,8 @@ class ItemForm extends React.Component {
       image: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.onDrop = this.onDrop.bind(this);
-  }
-
-  onDrop(picture) {
-    this.setState({ image: picture[0] });
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(el) {
@@ -41,6 +37,10 @@ class ItemForm extends React.Component {
       history.push('/items');
     };
     createItem(this.state, store.user.auth_token, callBack);
+  }
+
+  onDrop(picture) {
+    this.setState({ image: picture[0] });
   }
 
   render() {
