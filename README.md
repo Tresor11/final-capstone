@@ -1,7 +1,7 @@
 
 # Resell-app
 
-### This project is a single page application built with React,Redux and Rails
+### This project is a single page application built with React,Redux and Rails.
 
 #### This application is a resell-app where users can sell or buy partially used items for an affordable price.
 
