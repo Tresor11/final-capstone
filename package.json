@@ -58,7 +58,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "jest-enzyme": "^7.1.2",
-    "postcss": "^8.2.13",
+    "postcss": "^8.4.31",
     "redux-mock-store": "^1.5.4",
     "stylelint": "^15.10.1",
     "stylelint-config-standard": "^20.0.0",
